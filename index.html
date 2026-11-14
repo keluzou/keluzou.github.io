@@ -65,6 +65,31 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 .focus-entry em{display:block;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9074a3;font-weight:700;margin-bottom:5px}
 @media(max-width:900px){.interest-layout{grid-template-columns:1fr;gap:18px}.interest-focus{border-left:0;border-top:1px solid #d9dedf;padding:26px 0 0}.interest-visual{max-width:590px;width:100%;margin:auto}}
 @media(max-width:560px){.interest-visual{height:360px}.interest-center{width:155px;height:140px}.interest-center strong{font-size:15px}.interest-bubble strong{font-size:12px}.interest-bubble .interest-icon{font-size:21px}.interest-teaching{width:142px;height:104px;left:28%}.interest-cognition{width:130px;height:105px;bottom:37px}.interest-ai{width:148px;height:115px;bottom:37px}.interest-ai small{font-size:7px}.interest-hint{font-size:10px}}
+/* About: editorial narrative and academic timeline */
+#about .section-title{margin-bottom:9px}#about .about-period{color:#e7b950}
+.about-kicker{font-size:16px;color:#63758a;margin:0 0 30px;line-height:1.6}
+.about-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:clamp(30px,5vw,75px);align-items:center}
+.about-story{padding:6px 0 12px}
+.about-accent{display:flex;gap:10px;align-items:center;color:#a7802d;font-size:10px;font-weight:800;letter-spacing:.14em;margin-bottom:23px}
+.about-accent span:nth-child(even){color:#e3bb52}
+.about-story p{font-size:15px;line-height:1.95;color:#53657b;margin:0 0 19px;max-width:580px}
+.about-story p:first-of-type{font-size:16px;color:#344c65}
+.about-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:27px}
+.about-journey{background:#fffdf7;border:1px solid #eee7d6;border-radius:22px;padding:30px 31px 24px;box-shadow:0 16px 45px #574f3010;position:relative}
+.about-journey:before{content:"";position:absolute;inset:auto -10px -10px 28px;height:24px;background:#f9e8ac;z-index:-1;border-radius:4px;transform:rotate(-1deg)}
+.about-journey-header{display:flex;gap:15px;align-items:center;margin-bottom:30px}
+.about-mini-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:14px;background:#e2f0fa;color:#233d5c;font-size:27px}
+.about-journey-header small{font-size:10px;letter-spacing:.16em;font-weight:800;color:#a8863d}
+.about-journey-header h3{font-family:Georgia,serif;font-size:26px;color:var(--ink);margin:4px 0 0}
+.about-timeline{border-left:2px solid #e7d69d;margin-left:8px;padding-left:27px}
+.about-milestone{position:relative;margin-bottom:27px}
+.about-milestone:last-child{margin-bottom:3px}
+.about-milestone:before{content:"";position:absolute;left:-35px;top:4px;width:10px;height:10px;background:#e9c45c;border:3px solid #fffdf7;border-radius:50%;box-shadow:0 0 0 1px #e8dba9}
+.about-year{display:block;font-size:11px;color:#aa842e;font-weight:800;letter-spacing:.04em}
+.about-milestone h4{font-size:15px;line-height:1.35;color:var(--ink);margin:7px 0}
+.about-milestone p{font-size:13px;line-height:1.65;color:#68798a;margin:0}
+@media(max-width:850px){.about-layout{grid-template-columns:1fr;gap:24px}.about-journey{max-width:650px}}
+@media(max-width:620px){.about-journey{padding:23px 22px}.about-story p{font-size:14px}.about-story p:first-of-type{font-size:15px}}
 </style>
 </head>
 <body>
@@ -102,7 +127,22 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <button class="focus-entry" data-topic="0"><span class="focus-icon">⌘</span><span><em>Future direction</em><strong>AI-Assisted Language Education</strong><small>Exploring how AI-based tools and feedback may support teaching and learning.</small></span></button>
 </div></div></section>
 <section class="chapter" id="about" aria-label="About">
-<p class="eyebrow">02 / About me</p><h2 class="section-title">Curious about<br>language &amp; learning.</h2><div class="split"><div><p class="lead">I am a master's student in Linguistics and Translation at City University of Hong Kong, with a background in Chinese language education. My academic interests lie at the intersection of language learning, cognition and emerging educational technologies.</p><div><span class="pill">Applied linguistics</span><span class="pill">Language education</span><span class="pill">AI &amp; learning</span></div></div><div class="paper"><h3>Academic journey</h3><div class="timeline"><div class="event"><small>2026 — Present</small><h3>City University of Hong Kong</h3><p>MA in Linguistics and Translation</p></div><div class="event"><small>Undergraduate study</small><h3>Zhejiang International Studies University</h3><p>Chinese Language and Literature (Teacher Education)</p></div><div class="event"><small>2025</small><h3>Teaching internship</h3><p>Chinese language teaching and classroom experience in Hangzhou.</p></div></div></div></div>
+<p class="eyebrow">02 / About me</p><h2 class="section-title">About Me<span class="about-period">.</span></h2>
+<p class="about-kicker">From classroom experience to questions about language and learning.</p>
+<div class="about-layout">
+<div class="about-story">
+<div class="about-accent" aria-hidden="true"><span>LANGUAGE</span><span>·</span><span>LEARNING</span><span>·</span><span>EDUCATION</span></div>
+<p>I am currently pursuing an MA in Linguistics and Translation at City University of Hong Kong. Before this, I studied Chinese Language and Literature (Teacher Education) at Zhejiang International Studies University.</p>
+<p>My background in teacher education and classroom experience sparked my interest in how languages are taught and learned. During my postgraduate studies, I have developed a stronger interest in applied linguistics and the cognitive processes involved in language learning.</p>
+<p>I hope to connect linguistic research with educational practice and explore how emerging technologies can support language teaching and learning.</p>
+<div class="about-tags"><span class="pill">Language education</span><span class="pill">Applied linguistics</span><span class="pill">Teaching experience</span></div>
+</div>
+<div class="about-journey"><div class="about-journey-header"><span class="about-mini-icon" aria-hidden="true">▤</span><div><small>MY PATH SO FAR</small><h3>Academic Journey</h3></div></div>
+<div class="about-timeline">
+<div class="about-milestone"><span class="about-year">2026 — Present</span><h4>City University of Hong Kong</h4><p>MA in Linguistics and Translation</p></div>
+<div class="about-milestone"><span class="about-year">Undergraduate study</span><h4>Zhejiang International Studies University</h4><p>Chinese Language and Literature (Teacher Education)</p></div>
+<div class="about-milestone"><span class="about-year">2025</span><h4>Teaching Internship</h4><p>Chinese language teaching and classroom experience in Hangzhou</p></div>
+</div></div></div>
 </section>
 <section class="chapter" id="research" aria-label="Research">
 <p class="eyebrow">03 / Research</p><h2 class="section-title">Questions that<br>keep me curious.</h2><p class="lead">Select an area to see how my coursework and research proposals connect to broader questions in language learning.</p><div class="research-layout"><div class="tabs" role="group" aria-label="Research areas"><button data-research="0">01 · AI in Education</button><button data-research="1">02 · Psycholinguistics</button><button data-research="2">03 · Second Language Learning</button><button data-research="3">04 · Corpus Linguistics</button></div><div class="research-detail" id="research-detail" aria-live="polite"></div></div>
