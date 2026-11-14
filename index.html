@@ -41,6 +41,56 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  #research-projects .project p{font-size:13px}
  #research-projects .research-projects-bottom{flex:0 0 auto;margin-top:20px}
 }
+/* Unified fixed-height presentation slides: no page or inner-chapter vertical scrolling on desktop. */
+@media(min-width:951px){
+ .site>main>.chapter{overflow:hidden!important;display:none;min-height:0}
+ .site>main>.chapter.active{display:block}
+ #interests.active,#about.active,#publications.active,#teaching.active,#teaching-portfolio.active,#contact.active{display:flex;flex-direction:column;justify-content:center;min-height:0}
+ #interests .interest-intro{font-size:clamp(12px,1vw,14px);line-height:1.55;margin-bottom:10px}
+ #interests .interest-layout{flex:1 1 auto;min-height:0;gap:20px}
+ #interests .interest-visual{height:100%;max-height:410px}
+ #interests .interest-focus{padding-top:0;padding-bottom:0}
+ #interests .interest-focus h3{font-size:clamp(20px,2vw,27px)}
+ #interests .focus-entry{padding-top:9px;padding-bottom:9px}
+ #about .about-layout{flex:1 1 auto;min-height:0;align-items:center;gap:30px}
+ #about .about-story p{font-size:clamp(12px,1.05vw,14px);line-height:1.55;margin-top:0;margin-bottom:12px}
+ #about .about-kicker{margin-bottom:15px}
+ #about .about-milestone{margin-bottom:13px}
+ #about .about-journey{padding:clamp(15px,2vw,25px)}
+ #publications .lead{margin-bottom:12px;font-size:14px}
+ #publications .pub-card{max-width:100%!important;padding:clamp(15px,1.8vw,25px)!important}
+ #publications .pub-card h3{font-size:clamp(17px,1.7vw,22px)!important;margin:8px 0!important;line-height:1.25!important}
+ #publications .pub-card p{font-size:clamp(12px,.95vw,13px);line-height:1.5!important;margin-bottom:8px!important}
+ #publications .pub-card>div{padding-top:10px!important;margin-top:10px!important}
+ #publications .pub-card .btn{margin-top:12px!important;padding:9px 17px}
+ #publications>.mini-note{margin-top:10px!important}
+ #teaching .lead{margin-bottom:16px}
+ #teaching .teaching-overview{flex:1 1 auto;min-height:0;display:flex;align-items:center}
+ #teaching .teaching-overview .split{width:100%;gap:22px}
+ #teaching .teaching-overview .paper{padding:clamp(24px,3vw,40px)}
+ #teaching .teaching-overview .paper h3{font-size:clamp(18px,1.7vw,23px)}
+ #teaching .teaching-overview .paper p{font-size:clamp(13px,1.1vw,15px)}
+ #teaching-portfolio>.paper{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);grid-template-rows:auto auto 1fr auto;column-gap:28px;align-content:center;align-items:center;padding:clamp(18px,2vw,28px);margin-top:0!important}
+ #teaching-portfolio>.paper>.pill{grid-column:2;grid-row:1;justify-self:start}
+ #teaching-portfolio>.paper>a[aria-label*="Watch Chinese"]{grid-column:1;grid-row:1/5;max-width:100%!important;margin:0!important}
+ #teaching-portfolio>.paper>a[aria-label*="Watch Chinese"] img{aspect-ratio:4/3!important;object-fit:cover!important}
+ #teaching-portfolio>.paper>h3{grid-column:2;grid-row:2;font-size:clamp(17px,1.6vw,22px)}
+ #teaching-portfolio>.paper>p{grid-column:2;grid-row:3;font-size:14px;line-height:1.6}
+ #teaching-portfolio>.paper>.btn{grid-column:2;grid-row:4;justify-self:start}
+ #contact .contact-grid{max-width:none;width:100%;margin-top:20px}
+ #contact .contact-tile{padding:clamp(22px,2.8vw,36px)}
+ .section-title{margin-bottom:15px}
+}
+@media(min-width:951px) and (max-height:740px){
+ .site>header{padding-top:13px;padding-bottom:12px}
+ .site>footer{padding-top:10px;padding-bottom:10px}
+ .site>main{padding-top:4px;padding-bottom:4px}
+ .site>main>.chapter .eyebrow{margin-bottom:8px}
+ .site>main>.chapter .section-title{font-size:clamp(25px,2.7vw,36px);margin-bottom:10px;padding-bottom:10px}
+ #interests .interest-visual{transform:scale(.88);transform-origin:center center}
+ #about .about-story p{font-size:12px;line-height:1.4;margin-bottom:8px}
+ #publications .pub-card p{font-size:12px;line-height:1.35!important}
+}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .hero-new{grid-template-columns:minmax(0,1fr) minmax(280px,.82fr);gap:clamp(35px,7vw,100px);min-height:570px}.hero-new .hero-copy{max-width:600px}.hero-new h1{font-size:clamp(52px,6vw,80px)}.hero-new .intro{max-width:520px}.portrait-large{width:min(100%,385px);aspect-ratio:3/4;justify-self:center;border-radius:18px;overflow:hidden;background:#fff0c7;border:7px solid #fffdf8;box-shadow:0 18px 45px #4c3f231a;position:relative;transform:none}.portrait-large img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(1.035);display:block}.portrait-fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#927438;text-align:center;font-family:Georgia,serif;font-size:22px;padding:20px}.portrait-fallback small{font:12px Inter,Arial,sans-serif;color:#9a895d}.interests-map{max-width:760px;margin:0 auto;padding-bottom:30px}.interests-map .map{width:100%;max-width:690px;margin:0 auto;height:490px}@media(max-width:950px){.hero-new{grid-template-columns:1fr 1fr;min-height:480px;gap:25px}.portrait-large{width:min(100%,330px)}}@media(max-width:620px){.hero-new{grid-template-columns:1fr;gap:27px;padding-top:15px}.hero-new h1{font-size:54px}.portrait-large{width:min(100%,310px);aspect-ratio:3/3.6}.interests-map .map{height:350px}.nav{gap:8px 12px}}.portrait-editorial{position:relative;width:min(100%,480px);min-height:570px;justify-self:center;display:flex;align-items:center;justify-content:center;isolation:isolate}.portrait-editorial:before{content:"";position:absolute;width:86%;height:78%;background:#ffe7a3;border-radius:46% 54% 57% 43%/54% 48% 52% 46%;transform:translate(10px,-5px) rotate(-9deg);z-index:-2}.portrait-editorial:after{content:"";position:absolute;width:67%;height:69%;border:1.5px solid #d7b961;border-radius:48% 52% 53% 47%;transform:translate(55px,2px) rotate(12deg);z-index:-1}.portrait-editorial .portrait-large{width:76%;max-width:360px;aspect-ratio:3/4;border:9px solid #fffdf7;border-radius:9px;box-shadow:0 20px 48px #66572e2b;z-index:1}.portrait-orbit{position:absolute;border:1px dashed #b9a96d;border-radius:50%;pointer-events:none}.orbit-one{width:100px;height:100px;top:18px;right:10px;opacity:.65}.orbit-two{width:46px;height:46px;bottom:42px;left:3px;opacity:.5}.portrait-note{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:0 10px 24px #4d44301a;font-size:9px;font-weight:800;letter-spacing:.14em;color:#405269}.note-icon{font-family:Georgia,serif;font-size:18px;font-weight:400;letter-spacing:0}.note-top{top:37px;left:0;background:#dceef8;width:138px;height:76px;border-radius:18px 18px 18px 4px;transform:rotate(-5deg)}.note-side{right:-2px;top:43%;background:#f8dce3;width:124px;height:78px;border-radius:18px 18px 4px 18px;transform:rotate(4deg)}.note-side .note-icon{font-size:29px;line-height:.75}.portrait-stamp{position:absolute;bottom:56px;left:1px;width:132px;height:110px;border-radius:18px 18px 18px 4px;background:#fff0bd;box-shadow:0 10px 24px #4d44301a;z-index:3;display:flex;justify-content:center;align-items:center;transform:rotate(-3deg)}.stamp-amp{font-family:Georgia,serif;font-size:29px;font-weight:400;line-height:1}.portrait-caption{position:absolute;right:6px;bottom:14px;color:#827a66;font-size:11px;letter-spacing:.025em}.caption-mark{font-weight:800;color:#ba8d35;margin-right:6px}@media(max-width:950px){.portrait-editorial{min-height:490px}.portrait-editorial .portrait-large{width:78%}.note-top{left:-5px}.note-side{right:-10px}}@media(max-width:620px){.portrait-editorial{width:min(100%,365px);min-height:445px;margin:0 auto 6px}.portrait-editorial .portrait-large{width:73%;max-width:275px;aspect-ratio:3/3.8}.portrait-editorial:before{width:84%;height:77%}.note-top{width:114px;height:66px;top:20px;left:0}.note-side{width:108px;height:68px;right:0;top:42%;font-size:8px}.portrait-stamp{width:110px;height:94px;left:0;bottom:44px}.portrait-stamp svg{width:88px;height:75px}.stamp-amp{font-size:24px}.portrait-caption{bottom:8px;font-size:10px}}.portrait-editorial .note-top{width:110px;height:60px;top:49px;left:12px;font-size:8px}.portrait-editorial .note-top .note-icon{font-size:15px}.portrait-editorial .note-side{width:98px;height:60px;right:9px;top:44%;font-size:8px}.portrait-editorial .note-side .note-icon{font-size:24px}.portrait-editorial .portrait-stamp{width:104px;height:88px;left:13px;bottom:68px}.portrait-editorial .portrait-stamp svg{width:83px;height:69px}@media(max-width:620px){.portrait-editorial .note-top{width:92px;height:53px;left:9px;top:32px;font-size:7px}.portrait-editorial .note-side{width:84px;height:53px;right:8px;top:44%;font-size:7px}.portrait-editorial .portrait-stamp{width:88px;height:75px;left:10px;bottom:58px}.portrait-editorial .portrait-stamp svg{width:72px;height:60px}}.portrait-editorial .portrait-large{background:#e8e6d5}.portrait-editorial .portrait-large img{object-fit:contain;object-position:center center;filter:brightness(1.035)}.portrait-editorial .portrait-large{background:#f5f0e6!important;background-image:none!important}.portrait-editorial .portrait-large img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 65%!important;background:#f5f0e6!important;transform:none!important}/* Editorial portrait treatment: restrained offset outline instead of yellow circles */
 .portrait-editorial:before{content:"";position:absolute;width:77%;height:76%;top:12%;left:17%;background:none!important;border:1.5px solid #a8bac3;border-radius:3px;transform:translate(16px,13px);z-index:-1;pointer-events:none}
@@ -120,11 +170,11 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <body>
 <div class="site">
 <header><nav class="nav" aria-label="Main navigation">
-<button data-go="0">Home</button><button data-go="1">Interests</button><button data-go="2">About</button><button data-go="3">Research</button><button data-go="5">Publications</button><button data-go="6">Teaching</button><button data-go="7">Contact</button>
+<button data-go="0">Home</button><button data-go="1">Interests</button><button data-go="2">About</button><button data-go="3">Research</button><button data-go="5">Publications</button><button data-go="6">Teaching</button><button data-go="8">Contact</button>
 </nav></header>
 <main id="main">
 <section class="chapter active" id="home" aria-label="Home">
-<div class="hero hero-new"><div class="hero-copy"><p class="eyebrow">Welcome to my academic space</p><h1>Kelu Zou<span style="color:#e8bd56">.</span></h1><p class="subtitle">MA Student in Linguistics and Translation</p><p class="school">City University of Hong Kong</p><p class="intro">My background is in language education. I am interested in language teaching and learning, and how cognition shapes language use. In future research, I also hope to explore the potential of AI in education.</p><div class="actions"><button class="btn" data-go="1">Research interests <span aria-hidden="true">→</span></button><button class="btn alt" data-go="7">Contact me <span aria-hidden="true">↗</span></button></div></div>
+<div class="hero hero-new"><div class="hero-copy"><p class="eyebrow">Welcome to my academic space</p><h1>Kelu Zou<span style="color:#e8bd56">.</span></h1><p class="subtitle">MA Student in Linguistics and Translation</p><p class="school">City University of Hong Kong</p><p class="intro">My background is in language education. I am interested in language teaching and learning, and how cognition shapes language use. In future research, I also hope to explore the potential of AI in education.</p><div class="actions"><button class="btn" data-go="1">Research interests <span aria-hidden="true">→</span></button><button class="btn alt" data-go="8">Contact me <span aria-hidden="true">↗</span></button></div></div>
 <div class="portrait-editorial" aria-label="Language and education themed portrait composition">
 <div class="portrait-orbit orbit-one" aria-hidden="true"></div><div class="portrait-orbit orbit-two" aria-hidden="true"></div>
 <div class="portrait-note note-top" aria-hidden="true"><span class="note-icon">/læŋɡwɪdʒ/</span><span>LANGUAGE</span></div>
@@ -221,8 +271,15 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 </article>
 <p class="mini-note" style="margin-top:20px">Graduate coursework and research proposals are presented on the Research page, separately from published work.</p>
 </section>
-<section class="chapter" id="teaching" aria-label="Teaching and experience">
-<p class="eyebrow">05 / Teaching &amp; experience</p><h2 class="section-title">From the Classroom to Research.</h2><div class="split"><div class="paper"><span class="pill">Teaching · 2025</span><h3>Chinese Language Teaching Internship</h3><p>Wenxi Middle School, Hangzhou. Experience in lesson planning, classroom instruction and student support, informed by a teacher-education background.</p></div><div class="paper"><span class="pill">Academic projects</span><h3>Connecting research and practice</h3><p>Graduate coursework includes research design, language and cognition, AI-assisted learning, and corpus-based lexical analysis. These experiences shape my interest in evidence-based language education.</p></div></div>
+<section class="chapter" id="teaching" aria-label="Teaching experience">
+<p class="eyebrow">05 / Teaching · 1 of 2</p><h2 class="section-title">From the Classroom to Research.</h2>
+<p class="lead">Teaching experience and graduate study inform my interest in evidence-based language education.</p>
+<div class="teaching-overview"><div class="split"><div class="paper"><span class="pill">Teaching · 2025</span><h3>Chinese Language Teaching Internship</h3><p>Wenxi Middle School, Hangzhou. Experience in lesson planning, classroom instruction and student support, informed by a teacher-education background.</p></div><div class="paper"><span class="pill">Academic projects</span><h3>Connecting research and practice</h3><p>Graduate coursework includes research design, language and cognition, AI-assisted learning, and corpus-based lexical analysis. These experiences shape my interest in evidence-based language education.</p></div></div>
+</div>
+<div class="research-page-actions"><span class="mini-note">Next: Microteaching Portfolio</span><button class="btn yellow" type="button" data-go="7">View Teaching Portfolio →</button></div>
+</section>
+<section class="chapter" id="teaching-portfolio" aria-label="Microteaching portfolio">
+<p class="eyebrow">05 / Teaching · 2 of 2</p><h2 class="section-title">Microteaching Portfolio.</h2>
 <div class="paper" style="margin-top:24px;background:linear-gradient(120deg,#fffdf6,#f7faff);">
   <span class="pill">Teaching portfolio · Video</span>
   <a href="https://drive.google.com/file/d/1bCIpJYxiwD_3vIDo-DfVSWtEAKenQOX5/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Watch Chinese language microteaching video on Google Drive" style="display:block;position:relative;max-width:850px;margin:18px auto 20px;border-radius:17px;overflow:hidden;line-height:0;box-shadow:0 12px 28px #24332b19;">
@@ -233,12 +290,13 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
   <p>An eight-minute junior secondary Chinese language microteaching demonstration, presenting a lesson based on <em>The Oath of the Land</em>.</p>
   <a class="btn yellow" href="https://drive.google.com/file/d/1bCIpJYxiwD_3vIDo-DfVSWtEAKenQOX5/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Watch microteaching video on Google Drive">Watch Video ↗</a>
 </div>
+
 </section>
 <section class="chapter" id="contact" aria-label="Contact">
 <p class="eyebrow">06 / Contact</p><h2 class="section-title">Let's Start a Conversation.</h2><p class="lead">I welcome conversations about language learning, AI in education and potential research collaborations.</p><div class="contact-grid"><a class="contact-tile" href="https://github.com/keluzou" target="_blank" rel="noopener noreferrer"><strong>GitHub ↗</strong><p>Explore my public profile and website repository.</p></a><div class="contact-tile"><strong>Academic contact</strong><p>Email and downloadable CV will be added once the preferred contact details and final CV are confirmed.</p></div></div>
 </section>
 </main>
-<footer><span class="foot-note">© <span id="year"></span> Kelu Zou</span><div class="pager"><button class="step" id="prev" aria-label="Previous chapter">← Previous</button><span class="count" id="count">01 / 08</span><div class="dots" id="dots" aria-label="Chapter selection"></div><button class="step" id="next" aria-label="Next chapter">Next →</button></div></footer>
+<footer><span class="foot-note">© <span id="year"></span> Kelu Zou</span><div class="pager"><button class="step" id="prev" aria-label="Previous chapter">← Previous</button><span class="count" id="count">01 / 09</span><div class="dots" id="dots" aria-label="Chapter selection"></div><button class="step" id="next" aria-label="Next chapter">Next →</button></div></footer>
 </div>
 <script>
 const sections=[...document.querySelectorAll('.chapter')], nav=[...document.querySelectorAll('.nav button')],dots=document.getElementById('dots');let current=0,topic=0;
@@ -249,7 +307,7 @@ const topics=[
 {title:'Corpus Linguistics',desc:'I use corpus-based approaches to investigate patterns of lexical frequency, distribution and vocabulary coverage.',projects:[['Corpus-based lexical analysis','Graduate course project · Comparing lexical coverage, cumulative coverage, hapax-related measures and semantic density, with an applied vocabulary-learning concept.']]}
 ];
 function renderTopic(i){topic=i;document.querySelectorAll('[data-research]').forEach((b,j)=>{b.classList.toggle('selected',j===i);b.setAttribute('aria-pressed',String(j===i))});let t=topics[i];const el=document.getElementById('research-detail');el.replaceChildren();const h=document.createElement('h3');h.textContent=t.title;const p=document.createElement('p');p.textContent=t.desc;el.append(h,p);const list=document.createElement('div');list.className='project-list';t.projects.forEach(([name,detail])=>{const d=document.createElement('details');d.className='project';const s=document.createElement('summary');s.textContent=name;const pp=document.createElement('p');pp.textContent=detail;d.append(s,pp);list.append(d)});el.append(list)}
-function go(i,updateHash=true){current=Math.max(0,Math.min(sections.length-1,i));sections.forEach((s,j)=>{s.classList.toggle('active',j===current);s.setAttribute('aria-hidden',String(j!==current))});nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current===4))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / 08';if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'})}
+function go(i,updateHash=true){current=Math.max(0,Math.min(sections.length-1,i));sections.forEach((s,j)=>{s.classList.toggle('active',j===current);s.setAttribute('aria-hidden',String(j!==current))});nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current===4)||(destination===6&&current===7))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / 09';if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'})}
 sections.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to '+s.id);b.addEventListener('click',()=>go(i));dots.append(b)});document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>{renderTopic(Number(b.dataset.topic));go(4)}));document.querySelectorAll('[data-research]').forEach(b=>b.addEventListener('click',()=>renderTopic(Number(b.dataset.research))));document.getElementById('prev').addEventListener('click',()=>go(current-1));document.getElementById('next').addEventListener('click',()=>go(current+1));document.getElementById('year').textContent=new Date().getFullYear();window.addEventListener('hashchange',()=>{const i=sections.findIndex(s=>s.id===location.hash.slice(1));if(i>=0)go(i,false)});document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1)});renderTopic(0);const initial=sections.findIndex(s=>s.id===location.hash.slice(1));go(initial>=0?initial:0,false);
 </script>
 </body></html>
