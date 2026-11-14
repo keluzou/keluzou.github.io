@@ -271,6 +271,39 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  .section-nav-btn{min-width:0;max-width:49%;padding:10px 12px}
  .site-nav-label{display:none}
 }
+
+/* Page-specific polish: full rounded left borders, balanced cards and two-column video. */
+@media(min-width:951px){
+ #research .section-content,#undergraduate-thesis .section-content{padding:0 7px 5px 5px;overflow:visible!important}
+ #research .research-experience-cards{gap:20px;align-items:stretch}
+ #research .research-experience-cards>.paper{border-radius:24px!important;overflow:visible;min-height:0;border-left:4px solid #e8c667!important;margin-bottom:0!important}
+ #undergraduate-thesis .thesis-card{border-radius:24px!important;border-left:4px solid #e8c667!important;overflow:visible;box-shadow:0 12px 35px #453f2508}
+ #research-projects .section-content{padding:0 4px 5px;overflow:visible!important}
+ #research-projects .research-layout{grid-template-columns:270px minmax(0,1fr)!important;gap:22px!important}
+ #research-projects .tabs button{padding:15px 17px!important;font-size:15px!important}
+ #research-projects .research-detail{padding:24px 27px!important;min-height:330px}
+ #research-projects .research-detail h3{font-size:28px!important}
+ #research-projects .research-detail>p{font-size:15px!important;line-height:1.65!important}
+ #research-projects .project summary{font-size:14px!important;padding:13px 17px!important}
+ #research-projects .research-future-line{font-size:15px}
+ #teaching .section-content{padding:0 4px 5px;overflow:visible!important}
+ #teaching .teaching-overview{margin-top:20px}
+ #teaching .teaching-overview .split{gap:26px;align-items:stretch}
+ #teaching .teaching-overview .paper{padding:35px!important;min-height:280px;display:flex;flex-direction:column;justify-content:center}
+ #teaching .teaching-overview .paper h3{font-size:24px!important;line-height:1.3;margin:14px 0!important}
+ #teaching .teaching-overview .paper p{font-size:16px!important;line-height:1.75!important}
+ #teaching .teaching-overview .pill{font-size:12px}
+}
+#teaching-portfolio .microteaching-card{padding:clamp(18px,2.2vw,28px)!important;margin-top:12px!important}
+#teaching-portfolio .microteaching-layout{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(20px,2.8vw,40px);align-items:center}
+#teaching-portfolio .microteaching-layout>a{width:100%!important;max-width:none!important;margin:0!important;display:block}
+#teaching-portfolio .microteaching-layout>a img{max-height:none!important;width:100%;aspect-ratio:1206/678;object-fit:cover}
+#teaching-portfolio .microteaching-description{min-width:0}
+#teaching-portfolio .microteaching-description h3{font-size:clamp(19px,1.8vw,25px)!important;line-height:1.35;margin:0 0 15px!important}
+#teaching-portfolio .microteaching-description p{font-size:15px!important;line-height:1.7!important;margin:0 0 18px!important}
+#teaching-portfolio .microteaching-actions{display:flex;flex-wrap:wrap;gap:9px}
+#teaching-portfolio .microteaching-actions .btn{padding:11px 16px;font-size:12px}
+@media(max-width:950px){#teaching-portfolio .microteaching-layout{grid-template-columns:1fr}#teaching-portfolio .microteaching-layout>a{max-width:700px!important}}
 </style>
 </head>
 <body>
@@ -410,19 +443,19 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <section class="chapter" id="teaching-portfolio" aria-label="Microteaching portfolio">
 <div class="section-content">
 <p class="eyebrow">05 / Teaching · 2 of 5</p><h2 class="section-title">Microteaching Portfolio.</h2>
-<div class="paper" style="margin-top:24px;background:linear-gradient(120deg,#fffdf6,#f7faff);">
+<div class="paper microteaching-card" style="background:linear-gradient(120deg,#fffdf6,#f7faff);">
   <span class="pill">Teaching portfolio · Video</span>
-  <a href="https://drive.google.com/file/d/1bCIpJYxiwD_3vIDo-DfVSWtEAKenQOX5/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Watch Chinese language microteaching video on Google Drive" style="display:block;position:relative;max-width:850px;margin:18px auto 20px;border-radius:17px;overflow:hidden;line-height:0;box-shadow:0 12px 28px #24332b19;">
+  <div class="microteaching-layout"><a href="https://drive.google.com/file/d/1bCIpJYxiwD_3vIDo-DfVSWtEAKenQOX5/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Watch Chinese language microteaching video on Google Drive" style="display:block;position:relative;max-width:850px;margin:18px auto 20px;border-radius:17px;overflow:hidden;line-height:0;box-shadow:0 12px 28px #24332b19;">
     <img src="%E8%AF%BE%E5%A0%82%E9%BB%91%E6%9D%BF%E5%89%8D%E7%9A%84%E6%B8%A9%E6%9A%96%E5%BE%AE%E7%AC%91.png" alt="Chinese language microteaching demonstration in front of a chalkboard displaying the lesson title 土地的誓言" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:1206/678;object-fit:cover;">
     <span aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;background:#fffdf4e8;color:#253c38;display:flex;align-items:center;justify-content:center;font-size:29px;line-height:1;box-shadow:0 5px 22px #17221c45;">▶</span>
   </a>
-  <h3>Chinese Language Microteaching: <em>The Oath of the Land</em> (《土地的誓言》)</h3>
+  <div class="microteaching-description"><h3>Chinese Language Microteaching: <em>The Oath of the Land</em> (《土地的誓言》)</h3>
   <p>An eight-minute junior secondary Chinese language microteaching demonstration. The accompanying lesson plan focuses on close reading, figurative language and emotional expression.</p>
   <div class="microteaching-actions">
     <a class="btn yellow" href="https://drive.google.com/file/d/1bCIpJYxiwD_3vIDo-DfVSWtEAKenQOX5/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Watch microteaching video on Google Drive">Watch Video ↗</a>
     <a class="btn alt portfolio-pdf" data-pdf="Oath_of_the_Land_Lesson_Design.pdf" href="Oath_of_the_Land_Lesson_Design.pdf" target="_blank" rel="noopener noreferrer">View Lesson Plan (PDF) ↗</a>
     <a class="btn alt portfolio-pdf" href="Oath_of_the_Land_Lesson_Slides.pdf" data-pdf="Oath_of_the_Land_Lesson_Slides.pdf" target="_blank" rel="noopener noreferrer">View Slides (PDF) ↗</a>
-  </div>
+  </div></div>
 </div>
 
 </div>
