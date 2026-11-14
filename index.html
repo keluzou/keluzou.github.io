@@ -31,6 +31,9 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 .portrait-editorial .portrait-large .portrait-fallback{position:relative;z-index:1}
 @media(max-width:620px){.portrait-editorial .portrait-large::before{transform:translate(13px,13px) rotate(2deg)}}/* Remove blue-gray offset outline; retain yellow paper layer and portrait decorations */
 .portrait-editorial::before{content:none!important;display:none!important;border:none!important}
+/* Refine homepage name size without changing other headings */
+.hero-new h1{font-size:clamp(44px,5vw,65px)}
+@media(max-width:620px){.hero-new h1{font-size:46px}}
 </style>
 </head>
 <body>
