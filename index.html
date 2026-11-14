@@ -360,6 +360,12 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  .section-nav-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px #26354b16}
 }
 @media(prefers-reduced-motion:reduce){.chapter,.chapter *{animation:none!important;transition:none!important}}
+
+/* Keep the central concept anchored: its centering transform must never be animated away. */
+@keyframes interestCenterReveal{0%{opacity:0;filter:blur(4px);transform:translate(-50%,-50%) scale(.88)}100%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) scale(1)}}
+@media(prefers-reduced-motion:no-preference){
+ #interests.active .interest-center{animation:interestCenterReveal .65s ease .55s both!important}
+}
 </style>
 </head>
 <body>
