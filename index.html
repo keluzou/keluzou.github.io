@@ -314,6 +314,23 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  #research .research-experience-cards>.paper p{font-size:clamp(12px,1vw,14px)!important;line-height:1.5!important;margin:0 0 9px!important}
  #research .research-experience-cards>.paper .pill{margin-bottom:6px!important}
 }
+
+/* Thesis card: reserve its bottom edge above the dedicated section navigation. */
+@media(min-width:951px){
+ #undergraduate-thesis .section-content{display:flex!important;flex-direction:column!important;overflow:hidden!important;padding:0 6px 6px 5px!important}
+ #undergraduate-thesis .section-content>.eyebrow,
+ #undergraduate-thesis .section-content>.section-title,
+ #undergraduate-thesis .section-content>.lead{flex:0 0 auto}
+ #undergraduate-thesis .section-content>.lead{margin-bottom:10px!important}
+ #undergraduate-thesis .section-content>.thesis-card{flex:0 1 auto;min-height:0;overflow:hidden!important;border-radius:24px!important;border-left:4px solid #e8c667!important;padding:15px 25px 14px!important;margin:0!important}
+ #undergraduate-thesis .thesis-card .pill{margin:0 0 7px!important;padding:5px 10px!important}
+ #undergraduate-thesis .thesis-card h3{font-size:23px!important;line-height:1.23!important;margin:7px 0!important}
+ #undergraduate-thesis .thesis-card .thesis-original{margin:7px 0 12px!important}
+ #undergraduate-thesis .thesis-card p{font-size:13.5px!important;line-height:1.45!important;margin:7px 0!important}
+ #undergraduate-thesis .thesis-card .portfolio-tags{margin:8px 0!important}
+ #undergraduate-thesis .thesis-card .portfolio-pdf{padding:10px 20px!important;margin-top:3px!important}
+ #undergraduate-thesis .section-navigation{flex:0 0 66px!important}
+}
 </style>
 </head>
 <body>
