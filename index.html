@@ -241,6 +241,22 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  .site>main>.chapter.active .section-content{min-height:0}
  .site>main>.chapter.active .section-navigation{position:static!important;bottom:auto!important;right:auto!important;left:auto!important;margin:14px 0 0!important;padding:6px 0!important;background:transparent!important;border:0!important;box-shadow:none!important}
 }
+
+/* Desktop: all Research/Teaching slides fit without internal vertical scrolling. */
+@media(min-width:951px){
+ .site>main>.chapter.active:has(.section-navigation) .section-content{overflow:hidden!important;scrollbar-width:none!important}
+ .site>main>.chapter.active:has(.section-navigation) .section-navigation{min-height:64px!important}
+ #teaching-portfolio .section-content .paper{padding:15px 23px!important;margin-top:8px!important}
+ #teaching-portfolio .section-content .paper>a[aria-label*="microteaching video"]{max-width:530px!important;margin:8px auto 10px!important}
+ #teaching-portfolio .section-content .paper>a[aria-label*="microteaching video"] img{max-height:220px!important;object-fit:cover!important}
+ #teaching-portfolio .section-content .paper h3{margin:7px 0!important}
+ #teaching-portfolio .section-content .paper p{margin:6px 0!important}
+ .chapter .section-content .eyebrow{margin-bottom:8px}
+ .chapter .section-content .section-title{margin-bottom:11px;padding-bottom:10px}
+ .chapter .section-content .lead{margin-bottom:12px;line-height:1.5}
+ #undergraduate-thesis .section-content .thesis-card{padding:17px 24px!important}
+ #undergraduate-thesis .section-content .thesis-card p{margin:6px 0;line-height:1.45}
+}
 </style>
 </head>
 <body>
@@ -449,9 +465,26 @@ const topics=[
 {title:'Corpus Linguistics',desc:'I use corpus-based measures to examine lexical distribution, frequency and vocabulary coverage.',projects:[
 {title:'Corpus-based lexical analysis',status:'Graduate course project · Corpus analysis',question:'How do texts differ in vocabulary coverage, lexical rarity and semantic content?',method:'Comparative analysis using word frequencies, cumulative coverage, hapax-related measures and semantic density; includes an exploratory vocabulary-learning application.'}]}
 ];
-function renderTopic(i){topic=i;document.querySelectorAll('[data-research]').forEach((b,j)=>{b.classList.toggle('selected',j===i);b.setAttribute('aria-pressed',String(j===i))});const t=topics[i],el=document.getElementById('research-detail');el.replaceChildren();const h=document.createElement('h3');h.textContent=t.title;const p=document.createElement('p');p.textContent=t.desc;el.append(h,p);const list=document.createElement('div');list.className='project-list';t.projects.forEach(project=>{const d=document.createElement('details');d.className='project';const summary=document.createElement('summary');summary.textContent=project.title;d.append(summary);const content=document.createElement('div');content.className='project-info';const status=document.createElement('span');status.className='project-status';status.textContent=project.status;content.append(status);[['Research question',project.question],['Approach',project.method]].forEach(([label,value])=>{const line=document.createElement('p');const strong=document.createElement('strong');strong.textContent=label+': ';line.append(strong,document.createTextNode(value));content.append(line)});d.append(content);list.append(d)});el.append(list)}
-function go(i,updateHash=true){current=Math.max(0,Math.min(sections.length-1,i));sections.forEach((s,j)=>{s.classList.toggle('active',j===current);s.setAttribute('aria-hidden',String(j!==current))});nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current>=4&&current<=5)||(destination===7&&current>=8&&current<=11))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+sections.length;if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'})}
-sections.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to '+s.id);b.addEventListener('click',()=>go(i));dots.append(b)});document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>{renderTopic(Number(b.dataset.topic));go(5)}));document.querySelectorAll('[data-research]').forEach(b=>b.addEventListener('click',()=>renderTopic(Number(b.dataset.research))));document.getElementById('prev').addEventListener('click',()=>go(current-1));document.getElementById('next').addEventListener('click',()=>go(current+1));document.getElementById('year').textContent=new Date().getFullYear();window.addEventListener('hashchange',()=>{const i=sections.findIndex(s=>s.id===location.hash.slice(1));if(i>=0)go(i,false)});document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1)});renderTopic(0);const initial=sections.findIndex(s=>s.id===location.hash.slice(1));go(initial>=0?initial:0,false);
+function renderTopic(i){topic=i;document.querySelectorAll('[data-research]').forEach((b,j)=>{b.classList.toggle('selected',j===i);b.setAttribute('aria-pressed',String(j===i))});const t=topics[i],el=document.getElementById('research-detail');el.replaceChildren();const h=document.createElement('h3');h.textContent=t.title;const p=document.createElement('p');p.textContent=t.desc;el.append(h,p);const list=document.createElement('div');list.className='project-list';t.projects.forEach(project=>{const d=document.createElement('details');d.className='project';const summary=document.createElement('summary');summary.textContent=project.title;d.append(summary);const content=document.createElement('div');content.className='project-info';const status=document.createElement('span');status.className='project-status';status.textContent=project.status;content.append(status);[['Research question',project.question],['Approach',project.method]].forEach(([label,value])=>{const line=document.createElement('p');const strong=document.createElement('strong');strong.textContent=label+': ';line.append(strong,document.createTextNode(value));content.append(line)});d.append(content);list.append(d)});el.append(list);requestAnimationFrame(fitActiveSection)}
+
+/* Fit content to a fixed slide viewport, without clipping or scrollbars. */
+function fitActiveSection(){
+ const chapter=sections[current];if(!chapter)return;
+ const content=chapter.querySelector('.section-content');if(!content)return;
+ content.style.zoom='1';content.style.width='100%';
+ if(window.innerWidth<951)return;
+ const available=content.clientHeight;
+ if(available<100)return;
+ let zoom=1;
+ while(content.scrollHeight>available+2&&zoom>0.55){
+  zoom=Math.round((zoom-0.025)*1000)/1000;
+  content.style.zoom=String(zoom);
+  content.style.width=(100/zoom)+'%';
+ }
+}
+
+function go(i,updateHash=true){current=Math.max(0,Math.min(sections.length-1,i));sections.forEach((s,j)=>{s.classList.toggle('active',j===current);s.setAttribute('aria-hidden',String(j!==current))});nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current>=4&&current<=5)||(destination===7&&current>=8&&current<=11))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+sections.length;if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'});requestAnimationFrame(fitActiveSection)}
+sections.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to '+s.id);b.addEventListener('click',()=>go(i));dots.append(b)});document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>{renderTopic(Number(b.dataset.topic));go(5)}));document.querySelectorAll('[data-research]').forEach(b=>b.addEventListener('click',()=>renderTopic(Number(b.dataset.research))));document.getElementById('prev').addEventListener('click',()=>go(current-1));document.getElementById('next').addEventListener('click',()=>go(current+1));document.getElementById('year').textContent=new Date().getFullYear();window.addEventListener('hashchange',()=>{const i=sections.findIndex(s=>s.id===location.hash.slice(1));if(i>=0)go(i,false)});document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1)});renderTopic(0);const initial=sections.findIndex(s=>s.id===location.hash.slice(1));go(initial>=0?initial:0,false);window.addEventListener('resize',()=>requestAnimationFrame(fitActiveSection));document.querySelectorAll('.project-list').forEach(el=>el.addEventListener('toggle',()=>requestAnimationFrame(fitActiveSection),true));
 /* PDF buttons become active automatically when the corresponding public file exists. */
 document.querySelectorAll('a[data-pdf]').forEach(async a=>{const url=a.getAttribute('data-pdf');try{const response=await fetch(url,{method:'HEAD',cache:'no-store'});if(!response.ok)throw new Error('not uploaded');}catch(e){a.classList.add('is-pending');a.removeAttribute('href');a.setAttribute('aria-disabled','true');a.textContent='PDF available after upload';}});
 </script>
