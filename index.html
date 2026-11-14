@@ -447,6 +447,54 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  .site>main>.chapter.theme-entering .section-navigation *,
  .site>main>.chapter.theme-entering .section-title:after{animation:none!important}
 }
+
+/* Single slide animation is now driven by Web Animations API, not overlapping CSS animations. */
+@media(min-width:951px){
+ #research.chapter.active,#undergraduate-thesis.chapter.active,#research-projects.chapter.active,
+ #teaching.chapter.active,#teaching-portfolio.chapter.active,#lesson-designs.chapter.active,
+ #classroom-practice.chapter.active,#curriculum-design.chapter.active{animation:none!important;transform:none}
+ #research.chapter.active *,#undergraduate-thesis.chapter.active *,#research-projects.chapter.active *,
+ #teaching.chapter.active *,#teaching-portfolio.chapter.active *,#lesson-designs.chapter.active *,
+ #classroom-practice.chapter.active *,#curriculum-design.chapter.active *{animation:none!important}
+}
+/* Elastic collision without merging: bubbles meet near their edges, compress and slowly rebound. */
+@keyframes bubbleBounceTop{
+ 0%{transform:translate(0,-75px) scale(1);opacity:0}
+ 12%{opacity:1}
+ 42%{transform:translate(0,85px) scale(1)}
+ 51%{transform:translate(0,96px) scale(1.07,.9)}
+ 58%{transform:translate(0,83px) scale(.97,1.03)}
+ 76%{transform:translate(0,-14px) scale(1)}
+ 89%{transform:translate(0,5px)}
+ 100%{transform:translate(0,0) scale(1);opacity:1}
+}
+@keyframes bubbleBounceLeft{
+ 0%{transform:translate(-95px,20px) scale(1);opacity:0}
+ 12%{opacity:1}
+ 42%{transform:translate(95px,-22px) scale(1)}
+ 51%{transform:translate(109px,-27px) scale(.9,1.07)}
+ 58%{transform:translate(93px,-20px) scale(1.03,.97)}
+ 76%{transform:translate(-17px,5px) scale(1)}
+ 89%{transform:translate(6px,-2px)}
+ 100%{transform:translate(0,0) scale(1);opacity:1}
+}
+@keyframes bubbleBounceRight{
+ 0%{transform:translate(95px,20px) scale(1);opacity:0}
+ 12%{opacity:1}
+ 42%{transform:translate(-95px,-22px) scale(1)}
+ 51%{transform:translate(-109px,-27px) scale(.9,1.07)}
+ 58%{transform:translate(-93px,-20px) scale(1.03,.97)}
+ 76%{transform:translate(17px,5px) scale(1)}
+ 89%{transform:translate(-6px,-2px)}
+ 100%{transform:translate(0,0) scale(1);opacity:1}
+}
+@media(prefers-reduced-motion:no-preference){
+ #interests.active .interest-teaching{animation:bubbleBounceTop 2.45s cubic-bezier(.32,.65,.3,1) both!important}
+ #interests.active .interest-cognition{animation:bubbleBounceLeft 2.45s cubic-bezier(.32,.65,.3,1) both!important}
+ #interests.active .interest-ai{animation:bubbleBounceRight 2.45s cubic-bezier(.32,.65,.3,1) both!important}
+ #interests.active .interest-bubble strong,#interests.active .interest-bubble small,#interests.active .interest-bubble .interest-icon{animation-delay:2.1s!important}
+ #interests.active .interest-center{animation-delay:1.2s!important}
+}
 </style>
 </head>
 <body>
@@ -665,25 +713,22 @@ const topics=[
 ];
 function renderTopic(i){topic=i;document.querySelectorAll('[data-research]').forEach((b,j)=>{b.classList.toggle('selected',j===i);b.setAttribute('aria-pressed',String(j===i))});const t=topics[i],el=document.getElementById('research-detail');el.replaceChildren();const h=document.createElement('h3');h.textContent=t.title;const p=document.createElement('p');p.textContent=t.desc;el.append(h,p);const list=document.createElement('div');list.className='project-list';t.projects.forEach(project=>{const d=document.createElement('details');d.className='project';const summary=document.createElement('summary');summary.textContent=project.title;d.append(summary);const content=document.createElement('div');content.className='project-info';const status=document.createElement('span');status.className='project-status';status.textContent=project.status;content.append(status);[['Research question',project.question],['Approach',project.method]].forEach(([label,value])=>{const line=document.createElement('p');const strong=document.createElement('strong');strong.textContent=label+': ';line.append(strong,document.createTextNode(value));content.append(line)});d.append(content);list.append(d)});el.append(list)}
 
-let transitionTimer=null;
+let activeSlideAnimation=null;
 function themeGroup(i){return i>=3&&i<=5?'research':i>=7&&i<=11?'teaching':null}
 function go(i,updateHash=true){
  const previous=current;
  const next=Math.max(0,Math.min(sections.length-1,i));
- if(transitionTimer!==null){clearTimeout(transitionTimer);transitionTimer=null}
- sections.forEach(el=>el.classList.remove('theme-leaving','theme-entering','theme-forward','theme-backward'));
+ if(activeSlideAnimation){activeSlideAnimation.cancel();activeSlideAnimation=null}
  const animateTheme=previous!==next&&themeGroup(previous)!==null&&themeGroup(previous)===themeGroup(next)&&window.matchMedia('(min-width:951px) and (prefers-reduced-motion:no-preference)').matches;
  current=next;
  sections.forEach((el,j)=>{el.classList.toggle('active',j===current);el.setAttribute('aria-hidden',String(j!==current))});
  if(animateTheme){
-  const direction=next>previous?'theme-forward':'theme-backward';
-  sections[current].classList.add('theme-settled','theme-entering',direction);
-  transitionTimer=setTimeout(()=>{
-   sections[current].classList.remove('theme-entering',direction);
-   transitionTimer=null;
-  },510);
- }else if(previous!==next){
-  sections[current].classList.remove('theme-settled');
+  const incoming=sections[current];
+  activeSlideAnimation=incoming.animate(
+   [{transform:'translate3d('+(next>previous?'70px':'-70px')+',0,0)',opacity:.25},{transform:'translate3d(0,0,0)',opacity:1}],
+   {duration:560,easing:'cubic-bezier(.22,.65,.24,1)',iterations:1,fill:'none'}
+  );
+  activeSlideAnimation.onfinish=()=>{activeSlideAnimation=null};
  }
 nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current>=4&&current<=5)||(destination===7&&current>=8&&current<=11))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+sections.length;if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'})}
 sections.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to '+s.id);b.addEventListener('click',()=>go(i));dots.append(b)});document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>{renderTopic(Number(b.dataset.topic));go(5)}));document.querySelectorAll('[data-research]').forEach(b=>b.addEventListener('click',()=>renderTopic(Number(b.dataset.research))));document.getElementById('prev').addEventListener('click',()=>go(current-1));document.getElementById('next').addEventListener('click',()=>go(current+1));document.getElementById('year').textContent=new Date().getFullYear();window.addEventListener('hashchange',()=>{const i=sections.findIndex(s=>s.id===location.hash.slice(1));if(i>=0)go(i,false)});document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1)});renderTopic(0);const initial=sections.findIndex(s=>s.id===location.hash.slice(1));go(initial>=0?initial:0,false);
