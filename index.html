@@ -37,7 +37,35 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 /* Larger photo card, without enlarging the person inside it */
 @media(min-width:951px){.portrait-editorial .portrait-large{width:86%;max-width:405px;aspect-ratio:3/4}.portrait-editorial .portrait-large img{transform:scale(.86) translateY(7px)!important}}
 @media(min-width:621px) and (max-width:950px){.portrait-editorial .portrait-large{width:85%;max-width:390px}.portrait-editorial .portrait-large img{transform:scale(.89) translateY(7px)!important}}
-@media(max-width:620px){.portrait-editorial .portrait-large{width:79%;max-width:300px}.portrait-editorial .portrait-large img{transform:scale(.90) translateY(7px)!important}}</style>
+@media(max-width:620px){.portrait-editorial .portrait-large{width:79%;max-width:300px}.portrait-editorial .portrait-large img{transform:scale(.90) translateY(7px)!important}}/* Research interests: three focused directions, smaller center, future AI */
+#interests .section-title{margin-bottom:14px}
+#interests .interest-intro{max-width:810px;margin-bottom:32px}
+.interest-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(270px,.9fr);gap:35px;align-items:center}
+.interest-visual{height:475px;position:relative;min-width:0}
+.interest-ring{position:absolute;left:16%;top:15%;width:68%;height:73%;border:2px dashed #b8c6cc;border-radius:50%;opacity:.75}
+.interest-center{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:205px;height:178px;border-radius:48% 52% 46% 54%/52% 45% 55% 48%;background:#fff0bd;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;color:var(--ink);box-shadow:0 14px 30px #75682d12;z-index:2}
+.interest-center strong{font-family:Georgia,serif;font-size:19px;line-height:1.2}
+.interest-icon{font-size:27px;line-height:1.1;margin-bottom:8px}
+.interest-bubble{position:absolute;border:0;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 25px #39445c0a;z-index:3}
+.interest-bubble:hover,.interest-bubble:focus-visible{transform:translateY(-5px);box-shadow:0 15px 30px #39445c18}
+.interest-bubble strong{font-family:Georgia,serif;font-size:16px;line-height:1.2}
+.interest-teaching{width:185px;height:130px;left:27%;top:0;background:#e1f0fb;border-radius:48% 52% 55% 45%/55% 48% 52% 45%}
+.interest-cognition{width:174px;height:134px;left:0;bottom:43px;background:#ffe8dc;border-radius:52% 48% 47% 53%/45% 54% 46% 55%}
+.interest-ai{width:195px;height:140px;right:0;bottom:43px;background:#eee8fb;border-radius:48% 52% 53% 47%/51% 46% 54% 49%}
+.interest-ai small{font-size:9px;letter-spacing:.12em;color:#77658c;font-weight:800;margin-bottom:6px}
+.interest-hint{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:12px;color:#8b8d8d}
+.interest-focus{border-left:1px solid #d9dedf;padding:10px 0 10px 34px}
+.interest-focus h3{font-family:Georgia,serif;font-size:29px;color:var(--ink);margin:0}
+.focus-rule{width:50px;height:4px;border-radius:5px;background:#e9bc4d;margin:12px 0 24px}
+.focus-entry{width:100%;display:flex;align-items:flex-start;text-align:left;gap:17px;background:transparent;border:0;padding:12px 0 19px;color:var(--ink);cursor:pointer}
+.focus-entry:hover strong{text-decoration:underline;text-decoration-color:#e9bc4d;text-underline-offset:4px}
+.focus-icon{width:52px;height:52px;flex:0 0 52px;border-radius:14px;background:#fff1c8;display:grid;place-items:center;font-size:25px}
+.focus-entry strong{display:block;font-size:15px;margin:0 0 7px}
+.focus-entry small{display:block;font-size:13px;line-height:1.6;color:#617287}
+.focus-entry em{display:block;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9074a3;font-weight:700;margin-bottom:5px}
+@media(max-width:900px){.interest-layout{grid-template-columns:1fr;gap:18px}.interest-focus{border-left:0;border-top:1px solid #d9dedf;padding:26px 0 0}.interest-visual{max-width:590px;width:100%;margin:auto}}
+@media(max-width:560px){.interest-visual{height:360px}.interest-center{width:155px;height:140px}.interest-center strong{font-size:15px}.interest-bubble strong{font-size:12px}.interest-bubble .interest-icon{font-size:21px}.interest-teaching{width:142px;height:104px;left:28%}.interest-cognition{width:130px;height:105px;bottom:37px}.interest-ai{width:148px;height:115px;bottom:37px}.interest-ai small{font-size:7px}.interest-hint{font-size:10px}}
+</style>
 </head>
 <body>
 <div class="site">
@@ -56,13 +84,23 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <div class="portrait-caption" aria-hidden="true"><span class="caption-mark">01 /</span> Learning · Teaching · Cognition</div>
 </div></div>
 </section>
-<section class="chapter" id="interests" aria-label="Research interests"><p class="eyebrow">01 / Research interests</p><h2 class="section-title">Language, learning<br>&amp; what connects them.</h2><p class="lead">My interests center on language education, second language learning and cognition. I am also curious about the possibilities of AI for future educational research. Select an area to explore related projects.</p><div class="interests-map"><div class="map" aria-label="Interactive map of research interests"><svg viewBox="0 0 600 490" preserveAspectRatio="none" aria-hidden="true"><path d="M300 245 Q200 120 110 72"/><path d="M300 245 Q410 110 510 75"/><path d="M300 245 Q200 370 110 420"/><path d="M300 245 Q420 365 515 418"/></svg>
-<div class="node central"><strong>Language<br>&amp; Education</strong></div>
-<button class="node ai" data-topic="0"><span class="symbol" aria-hidden="true">⌘</span><strong>AI &amp; Language Education</strong></button>
-<button class="node psy" data-topic="1"><span class="symbol" aria-hidden="true">◎</span><strong>Psycholinguistics &amp; Cognition</strong></button>
-<button class="node l2" data-topic="2"><span class="symbol" aria-hidden="true">▤</span><strong>Language Teaching &amp; Learning</strong></button>
-<button class="node corpus" data-topic="3"><span class="symbol" aria-hidden="true">▦</span><strong>Corpus Linguistics</strong></button>
-<p class="map-caption">Select a research area to explore →</p></div></div></section>
+<section class="chapter" id="interests" aria-label="Research interests">
+<p class="eyebrow">01 / Research interests</p><h2 class="section-title">Research Interests</h2>
+<p class="lead interest-intro">My research interests lie at the intersection of language education and applied linguistics. I am particularly interested in language teaching and learning, and how linguistic and cognitive insights can inform educational practice. In the future, I hope to explore how AI can support language learning and teaching.</p>
+<div class="interest-layout">
+<div class="interest-visual" aria-label="Interactive research interests diagram">
+<div class="interest-ring" aria-hidden="true"></div>
+<div class="interest-center"><span class="interest-icon" aria-hidden="true">▤</span><strong>Language Education<br>&amp; Applied Linguistics</strong></div>
+<button class="interest-bubble interest-teaching" data-topic="2"><span class="interest-icon" aria-hidden="true">▱</span><strong>Language Teaching<br>&amp; Learning</strong></button>
+<button class="interest-bubble interest-cognition" data-topic="1"><span class="interest-icon" aria-hidden="true">◎</span><strong>Language<br>&amp; Cognition</strong></button>
+<button class="interest-bubble interest-ai" data-topic="0"><small>FUTURE DIRECTION</small><span class="interest-icon" aria-hidden="true">⌘</span><strong>AI-Assisted<br>Language Education</strong></button>
+<p class="interest-hint">Select a direction to explore related research →</p>
+</div>
+<div class="interest-focus"><h3>Research Focus</h3><div class="focus-rule"></div>
+<button class="focus-entry" data-topic="2"><span class="focus-icon">▱</span><span><strong>Language Teaching &amp; Learning</strong><small>Language pedagogy, learning processes, and assessment in educational contexts.</small></span></button>
+<button class="focus-entry" data-topic="1"><span class="focus-icon">◎</span><span><strong>Language &amp; Cognition</strong><small>How cognitive processes shape language learning and use.</small></span></button>
+<button class="focus-entry" data-topic="0"><span class="focus-icon">⌘</span><span><em>Future direction</em><strong>AI-Assisted Language Education</strong><small>Exploring how AI-based tools and feedback may support teaching and learning.</small></span></button>
+</div></div></section>
 <section class="chapter" id="about" aria-label="About">
 <p class="eyebrow">02 / About me</p><h2 class="section-title">Curious about<br>language &amp; learning.</h2><div class="split"><div><p class="lead">I am a master's student in Linguistics and Translation at City University of Hong Kong, with a background in Chinese language education. My academic interests lie at the intersection of language learning, cognition and emerging educational technologies.</p><div><span class="pill">Applied linguistics</span><span class="pill">Language education</span><span class="pill">AI &amp; learning</span></div></div><div class="paper"><h3>Academic journey</h3><div class="timeline"><div class="event"><small>2026 — Present</small><h3>City University of Hong Kong</h3><p>MA in Linguistics and Translation</p></div><div class="event"><small>Undergraduate study</small><h3>Zhejiang International Studies University</h3><p>Chinese Language and Literature (Teacher Education)</p></div><div class="event"><small>2025</small><h3>Teaching internship</h3><p>Chinese language teaching and classroom experience in Hangzhou.</p></div></div></div></div>
 </section>
