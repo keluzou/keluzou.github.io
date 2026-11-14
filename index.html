@@ -387,6 +387,54 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 .theme-sequence{font-size:11px;font-weight:700;color:#9c7a38;letter-spacing:.06em;display:inline-flex;align-items:center;gap:8px;margin-bottom:7px}
 .theme-sequence:before{content:"";height:2px;width:24px;background:#e9bd56}
 @media(prefers-reduced-motion:reduce){.theme-entering,.theme-leaving{animation:none!important}}
+
+/* Larger, deliberate convergence: travel to the centre, touch, then spring outward. */
+@keyframes interestConvergeTeachingWide{
+ 0%{transform:translate(95%,115%) scale(.75);opacity:0}
+ 12%{opacity:1}
+ 48%{transform:translate(55%,105%) scale(.9)}
+ 62%{transform:translate(70%,125%) scale(.83)}
+ 79%{transform:translate(-8%,-10%) scale(1.04)}
+ 90%{transform:translate(3%,3%) scale(.98)}
+ 100%{transform:translate(0,0) scale(1);opacity:1}
+}
+@keyframes interestConvergeCognitionWide{
+ 0%{transform:translate(135%,-50%) scale(.75);opacity:0}
+ 12%{opacity:1}
+ 48%{transform:translate(95%,-50%) scale(.9)}
+ 62%{transform:translate(120%,-60%) scale(.83)}
+ 79%{transform:translate(-9%,7%) scale(1.04)}
+ 90%{transform:translate(4%,-3%) scale(.98)}
+ 100%{transform:translate(0,0) scale(1);opacity:1}
+}
+@keyframes interestConvergeAIWide{
+ 0%{transform:translate(-135%,-65%) scale(.75);opacity:0}
+ 12%{opacity:1}
+ 48%{transform:translate(-92%,-48%) scale(.9)}
+ 62%{transform:translate(-112%,-63%) scale(.83)}
+ 79%{transform:translate(9%,8%) scale(1.04)}
+ 90%{transform:translate(-4%,-3%) scale(.98)}
+ 100%{transform:translate(0,0) scale(1);opacity:1}
+}
+@media(prefers-reduced-motion:no-preference){
+ #interests.active .interest-teaching{animation:interestConvergeTeachingWide 1.65s cubic-bezier(.28,.6,.22,1) both!important}
+ #interests.active .interest-cognition{animation:interestConvergeCognitionWide 1.65s cubic-bezier(.28,.6,.22,1) both!important}
+ #interests.active .interest-ai{animation:interestConvergeAIWide 1.65s cubic-bezier(.28,.6,.22,1) both!important}
+ #interests.active .interest-bubble strong,#interests.active .interest-bubble small,#interests.active .interest-bubble .interest-icon{animation-delay:1.48s!important}
+ #interests.active .interest-center{animation-delay:.95s!important}
+}
+@media(min-width:951px) and (prefers-reduced-motion:no-preference){
+ /* The settled slide must not replay the generic appear animation on cleanup. */
+ .site>main>.chapter.active.theme-settled:not(.theme-entering){animation:none!important;opacity:1!important;transform:none!important}
+ .site>main>.chapter.theme-entering .section-content>*,
+ .site>main>.chapter.theme-leaving .section-content>*,
+ .site>main>.chapter.theme-entering .section-navigation,
+ .site>main>.chapter.theme-leaving .section-navigation{animation:none!important}
+ .site>main>.chapter.theme-entering .section-title:after,
+ .site>main>.chapter.theme-leaving .section-title:after{animation:none!important;transform:none!important}
+ .site>main>.chapter.theme-entering{animation-duration:.5s!important}
+ .site>main>.chapter.theme-leaving{animation-duration:.5s!important}
+}
 </style>
 </head>
 <body>
@@ -617,9 +665,16 @@ function go(i,updateHash=true){
  sections.forEach((el,j)=>{el.classList.toggle('active',j===current);el.setAttribute('aria-hidden',String(j!==current))});
  if(animateTheme){
   const direction=next>previous?'theme-forward':'theme-backward';
+  sections[previous].classList.remove('theme-settled');
+  sections[current].classList.add('theme-settled','theme-entering',direction);
   sections[previous].classList.add('theme-leaving',direction);
-  sections[current].classList.add('theme-entering',direction);
-  transitionTimer=setTimeout(()=>{sections[previous].classList.remove('theme-leaving',direction);sections[current].classList.remove('theme-entering',direction);transitionTimer=null},520);
+  transitionTimer=setTimeout(()=>{
+   sections[previous].classList.remove('theme-leaving',direction);
+   sections[current].classList.remove('theme-entering',direction);
+   transitionTimer=null;
+  },510);
+ }else if(previous!==next){
+  sections[current].classList.remove('theme-settled');
  }
 nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current>=4&&current<=5)||(destination===7&&current>=8&&current<=11))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+sections.length;if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'})}
 sections.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to '+s.id);b.addEventListener('click',()=>go(i));dots.append(b)});document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>{renderTopic(Number(b.dataset.topic));go(5)}));document.querySelectorAll('[data-research]').forEach(b=>b.addEventListener('click',()=>renderTopic(Number(b.dataset.research))));document.getElementById('prev').addEventListener('click',()=>go(current-1));document.getElementById('next').addEventListener('click',()=>go(current+1));document.getElementById('year').textContent=new Date().getFullYear();window.addEventListener('hashchange',()=>{const i=sections.findIndex(s=>s.id===location.hash.slice(1));if(i>=0)go(i,false)});document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1)});renderTopic(0);const initial=sections.findIndex(s=>s.id===location.hash.slice(1));go(initial>=0?initial:0,false);
