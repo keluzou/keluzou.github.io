@@ -331,6 +331,35 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  #undergraduate-thesis .thesis-card .portfolio-pdf{padding:10px 20px!important;margin-top:3px!important}
  #undergraduate-thesis .section-navigation{flex:0 0 66px!important}
 }
+
+/* Motion language: convergence -> reveal -> forward continuity.
+   Transform/opacity only; no changes to slide geometry or navigation. */
+@keyframes interestConvergeTeaching{0%{transform:translate(85px,60px) scale(.68);opacity:.2}48%{transform:translate(25px,17px) scale(.92);opacity:1}65%{transform:translate(-8px,-6px) scale(1.05)}82%{transform:translate(4px,3px) scale(.98)}100%{transform:translate(0,0) scale(1)}}
+@keyframes interestConvergeCognition{0%{transform:translate(-95px,55px) scale(.68);opacity:.2}48%{transform:translate(-25px,15px) scale(.92);opacity:1}65%{transform:translate(8px,-6px) scale(1.05)}82%{transform:translate(-4px,3px) scale(.98)}100%{transform:translate(0,0) scale(1)}}
+@keyframes interestConvergeAI{0%{transform:translate(5px,-100px) scale(.68);opacity:.2}48%{transform:translate(2px,-24px) scale(.92);opacity:1}65%{transform:translate(0,9px) scale(1.05)}82%{transform:translate(0,-4px) scale(.98)}100%{transform:translate(0,0) scale(1)}}
+@keyframes interestReveal{from{opacity:0;filter:blur(5px);transform:translateY(7px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes sectionRise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@keyframes connectorDraw{from{transform:scaleX(0);opacity:.2}to{transform:scaleX(1);opacity:1}}
+@keyframes chapterLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:no-preference){
+ #interests.active .interest-teaching{animation:interestConvergeTeaching 1.1s cubic-bezier(.22,.7,.25,1) both}
+ #interests.active .interest-cognition{animation:interestConvergeCognition 1.1s cubic-bezier(.22,.7,.25,1) both}
+ #interests.active .interest-ai{animation:interestConvergeAI 1.1s cubic-bezier(.22,.7,.25,1) both}
+ #interests.active .interest-bubble strong,#interests.active .interest-bubble small,#interests.active .interest-bubble .interest-icon{animation:interestReveal .5s ease 1.03s both}
+ #interests.active .interest-center{animation:interestReveal .6s ease .55s both}
+ #interests.active .interest-ring{animation:interestReveal .65s ease .7s both}
+ #interests.active .focus-entry{animation:sectionRise .48s ease both}
+ #interests.active .focus-entry:nth-of-type(1){animation-delay:.9s}
+ #interests.active .focus-entry:nth-of-type(2){animation-delay:1.04s}
+ #interests.active .focus-entry:nth-of-type(3){animation-delay:1.18s}
+ .chapter.active .section-title:after{transform-origin:left;animation:chapterLine .65s ease .1s both}
+ .chapter.active .section-content>.paper,.chapter.active .section-content>.research-experience-cards,.chapter.active .section-content>.research-layout,.chapter.active .section-content>.teaching-overview,.chapter.active .section-content>.portfolio-feature,.chapter.active .section-content>.portfolio-cards{animation:sectionRise .5s ease .12s both}
+ .chapter.active .section-navigation{animation:sectionRise .4s ease .25s both}
+ .section-navigation:before{content:"";align-self:center;flex:1 1 auto;height:2px;max-width:180px;margin-right:auto;background:linear-gradient(90deg,transparent,#e9bd56);transform-origin:left;animation:connectorDraw .6s ease .35s both}
+ .section-nav-btn{transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+ .section-nav-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px #26354b16}
+}
+@media(prefers-reduced-motion:reduce){.chapter,.chapter *{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
