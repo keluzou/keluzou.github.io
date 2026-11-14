@@ -435,6 +435,18 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
  .site>main>.chapter.theme-entering{animation-duration:.5s!important}
  .site>main>.chapter.theme-leaving{animation-duration:.5s!important}
 }
+
+/* One transition per click: only the incoming slide moves, then remains still. */
+@media(min-width:951px) and (prefers-reduced-motion:no-preference){
+ .site>main>.chapter.theme-leaving{display:none!important}
+ .site>main>.chapter.theme-entering{animation-duration:.5s!important;animation-fill-mode:both!important}
+ .site>main>.chapter.active.theme-settled:not(.theme-entering){animation:none!important;transform:none!important;opacity:1!important}
+ .site>main>.chapter.theme-entering .section-content *,
+ .site>main>.chapter.theme-entering .section-content,
+ .site>main>.chapter.theme-entering .section-navigation,
+ .site>main>.chapter.theme-entering .section-navigation *,
+ .site>main>.chapter.theme-entering .section-title:after{animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -665,11 +677,8 @@ function go(i,updateHash=true){
  sections.forEach((el,j)=>{el.classList.toggle('active',j===current);el.setAttribute('aria-hidden',String(j!==current))});
  if(animateTheme){
   const direction=next>previous?'theme-forward':'theme-backward';
-  sections[previous].classList.remove('theme-settled');
   sections[current].classList.add('theme-settled','theme-entering',direction);
-  sections[previous].classList.add('theme-leaving',direction);
   transitionTimer=setTimeout(()=>{
-   sections[previous].classList.remove('theme-leaving',direction);
    sections[current].classList.remove('theme-entering',direction);
    transitionTimer=null;
   },510);
