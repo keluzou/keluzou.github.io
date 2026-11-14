@@ -34,7 +34,10 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 /* Refine homepage name size without changing other headings */
 .hero-new h1{font-size:clamp(44px,5vw,65px)}
 @media(max-width:620px){.hero-new h1{font-size:46px}}
-</style>
+/* Larger photo card, without enlarging the person inside it */
+@media(min-width:951px){.portrait-editorial .portrait-large{width:86%;max-width:405px;aspect-ratio:3/4}.portrait-editorial .portrait-large img{transform:scale(.86) translateY(7px)!important}}
+@media(min-width:621px) and (max-width:950px){.portrait-editorial .portrait-large{width:85%;max-width:390px}.portrait-editorial .portrait-large img{transform:scale(.89) translateY(7px)!important}}
+@media(max-width:620px){.portrait-editorial .portrait-large{width:79%;max-width:300px}.portrait-editorial .portrait-large img{transform:scale(.90) translateY(7px)!important}}</style>
 </head>
 <body>
 <div class="site">
