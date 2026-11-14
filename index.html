@@ -218,6 +218,12 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 #undergraduate-thesis .thesis-card p{line-height:1.55;margin-top:7px;margin-bottom:9px}
 #undergraduate-thesis .thesis-card .portfolio-tags{margin-top:8px;margin-bottom:10px}
 #undergraduate-thesis .section-navigation{margin-top:8px}
+
+/* Section navigation sits in its own reserved dock above the global footer. */
+.site>main:has(.chapter.active .section-navigation){padding-bottom:86px!important}
+.site>main>.chapter.active .section-navigation{position:fixed!important;bottom:76px!important;right:max(24px,calc((100vw - 1280px)/2 + 65px))!important;z-index:30!important;margin:0!important;padding:6px!important;background:var(--cream)!important;border:1px solid #eee3cc;border-radius:20px;box-shadow:0 8px 22px #26354b12}
+.site>main>.chapter.active .section-nav-btn{min-width:150px}
+@media(max-width:720px){.site>main>.chapter.active .section-navigation{bottom:72px!important;right:16px!important;left:16px!important;justify-content:flex-end}.site>main>.chapter.active .section-nav-btn{min-width:0;flex:1;max-width:50%}}
 </style>
 </head>
 <body>
