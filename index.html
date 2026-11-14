@@ -366,6 +366,27 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 @media(prefers-reduced-motion:no-preference){
  #interests.active .interest-center{animation:interestCenterReveal .65s ease .55s both!important}
 }
+
+/* Cohesive PowerPoint-like horizontal transitions within each multi-page theme. */
+@keyframes themedSlideInForward{from{opacity:.15;transform:translateX(55px)}to{opacity:1;transform:translateX(0)}}
+@keyframes themedSlideOutForward{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-55px)}}
+@keyframes themedSlideInBackward{from{opacity:.15;transform:translateX(-55px)}to{opacity:1;transform:translateX(0)}}
+@keyframes themedSlideOutBackward{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(55px)}}
+@keyframes themeProgressGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(min-width:951px) and (prefers-reduced-motion:no-preference){
+ .site>main{position:relative}
+ .site>main>.chapter.theme-leaving{display:block!important;position:absolute!important;inset:8px 0!important;width:100%!important;height:calc(100% - 16px)!important;z-index:2!important;pointer-events:none!important;overflow:hidden!important}
+ .site>main>.chapter.theme-entering{z-index:1;position:relative;animation-duration:.48s!important;animation-timing-function:cubic-bezier(.22,.7,.2,1)!important;animation-fill-mode:both!important}
+ .site>main>.chapter.theme-leaving{animation-duration:.42s!important;animation-timing-function:cubic-bezier(.22,.7,.2,1)!important;animation-fill-mode:both!important}
+ .site>main>.chapter.theme-entering.theme-forward{animation-name:themedSlideInForward!important}
+ .site>main>.chapter.theme-leaving.theme-forward{animation-name:themedSlideOutForward!important}
+ .site>main>.chapter.theme-entering.theme-backward{animation-name:themedSlideInBackward!important}
+ .site>main>.chapter.theme-leaving.theme-backward{animation-name:themedSlideOutBackward!important}
+ .site>main>.chapter.theme-entering .section-title:after{animation:chapterLine .45s ease .2s both}
+}
+.theme-sequence{font-size:11px;font-weight:700;color:#9c7a38;letter-spacing:.06em;display:inline-flex;align-items:center;gap:8px;margin-bottom:7px}
+.theme-sequence:before{content:"";height:2px;width:24px;background:#e9bd56}
+@media(prefers-reduced-motion:reduce){.theme-entering,.theme-leaving{animation:none!important}}
 </style>
 </head>
 <body>
@@ -444,6 +465,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 </div>
 
 </div>
+<div class="theme-sequence" aria-label="Part of Research · 1 / 3">Research · 1 / 3</div>
 <nav class="section-navigation" aria-label="Research section navigation"><button class="section-nav-btn section-nav-next" type="button" data-go="4" aria-label="Next research page: Undergraduate Thesis"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Undergraduate Thesis</span></button></nav>
 </section>
 <section class="chapter" id="undergraduate-thesis" aria-label="Undergraduate thesis">
@@ -458,6 +480,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <div class="portfolio-tags"><span>Chinese language education</span><span>Interdisciplinary teaching</span><span>Curriculum design</span></div>
 <a class="btn yellow portfolio-pdf" href="Undergraduate_Thesis_Interdisciplinary_Chinese_Teaching%20%281%29.pdf" data-pdf="Undergraduate_Thesis_Interdisciplinary_Chinese_Teaching%20%281%29.pdf" target="_blank" rel="noopener noreferrer">Read Thesis (PDF) ↗</a></article>
 </div>
+<div class="theme-sequence" aria-label="Part of Research · 2 / 3">Research · 2 / 3</div>
 <nav class="section-navigation" aria-label="Research section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="3" aria-label="Previous research page: Research Experience"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Research Experience</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="5" aria-label="Next research page: Graduate Projects"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Graduate Projects</span></button></nav>
 </section>
 <section class="chapter" id="research-projects" aria-label="Graduate projects and research directions">
@@ -470,6 +493,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 
 <div class="research-projects-bottom"><div><span class="pill">Future direction</span><span class="research-future-line">Connecting language education, applied linguistics and AI-assisted learning.</span></div></div>
 </div>
+<div class="theme-sequence" aria-label="Part of Research · 3 / 3">Research · 3 / 3</div>
 <nav class="section-navigation" aria-label="Research section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="4" aria-label="Previous research page: Undergraduate Thesis"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Undergraduate Thesis</span></button></nav>
 </section>
 <section class="chapter" id="publications" aria-label="Publications">
@@ -500,6 +524,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 </div>
 
 </div>
+<div class="theme-sequence" aria-label="Part of Teaching · 1 / 5">Teaching · 1 / 5</div>
 <nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-next" type="button" data-go="8" aria-label="Next teaching page: Microteaching Portfolio"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Microteaching Portfolio</span></button></nav>
 </section>
 <section class="chapter" id="teaching-portfolio" aria-label="Microteaching portfolio">
@@ -521,6 +546,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 </div>
 
 </div>
+<div class="theme-sequence" aria-label="Part of Teaching · 2 / 5">Teaching · 2 / 5</div>
 <nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="7" aria-label="Previous teaching page: Teaching Experience"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Teaching Experience</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="9" aria-label="Next teaching page: Lesson Designs"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Lesson Designs</span></button></nav>
 </section>
 <section class="chapter" id="lesson-designs" aria-label="Selected lesson designs">
@@ -533,6 +559,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 </div>
 
 </div>
+<div class="theme-sequence" aria-label="Part of Teaching · 3 / 5">Teaching · 3 / 5</div>
 <nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="8" aria-label="Previous research page: Microteaching Portfolio"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Microteaching Portfolio</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="10" aria-label="Next teaching page: Classroom Practice"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Classroom Practice</span></button></nav>
 </section>
 <section class="chapter" id="classroom-practice" aria-label="Classroom teaching and reflection">
@@ -542,6 +569,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <article class="paper portfolio-feature"><span class="pill">School internship · Classroom teaching</span><h3><em>Suzhou Gardens</em> (《苏州园林》)</h3><p class="portfolio-subtitle">Lesson plan and classroom reflection · Chinese</p><p>This work documents a lesson taught during a school internship with actual students. The lesson plan and classroom reflection document how I designed and taught this lesson, and how I considered students’ responses and possible improvements.</p><div class="portfolio-tags"><span>Authentic classroom practice</span><span>Lesson planning</span><span>Teaching reflection</span></div><a class="btn yellow portfolio-pdf" href="Suzhou_Gardens_Classroom_Lesson_and_Reflection.pdf" data-pdf="Suzhou_Gardens_Classroom_Lesson_and_Reflection.pdf" target="_blank" rel="noopener noreferrer">View Lesson Plan & Reflection (PDF) ↗</a><a class="btn alt portfolio-pdf" href="Suzhou_Gardens_Teaching_Slides.pdf" data-pdf="Suzhou_Gardens_Teaching_Slides.pdf" target="_blank" rel="noopener noreferrer">View Teaching Slides (PDF) ↗</a></article>
 
 </div>
+<div class="theme-sequence" aria-label="Part of Teaching · 4 / 5">Teaching · 4 / 5</div>
 <nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="9" aria-label="Previous research page: Lesson Designs"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Lesson Designs</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="11" aria-label="Next teaching page: Curriculum Design"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Curriculum Design</span></button></nav>
 </section>
 <section class="chapter" id="curriculum-design" aria-label="Curriculum design">
@@ -552,6 +580,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <p class="mini-note">These are selected undergraduate coursework samples, not peer-reviewed publications. Original teaching materials are in Chinese.</p>
 
 </div>
+<div class="theme-sequence" aria-label="Part of Teaching · 5 / 5">Teaching · 5 / 5</div>
 <nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="10" aria-label="Previous research page: Classroom Practice"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Classroom Practice</span></button></nav>
 </section>
 <section class="chapter" id="contact" aria-label="Contact">
@@ -576,7 +605,23 @@ const topics=[
 ];
 function renderTopic(i){topic=i;document.querySelectorAll('[data-research]').forEach((b,j)=>{b.classList.toggle('selected',j===i);b.setAttribute('aria-pressed',String(j===i))});const t=topics[i],el=document.getElementById('research-detail');el.replaceChildren();const h=document.createElement('h3');h.textContent=t.title;const p=document.createElement('p');p.textContent=t.desc;el.append(h,p);const list=document.createElement('div');list.className='project-list';t.projects.forEach(project=>{const d=document.createElement('details');d.className='project';const summary=document.createElement('summary');summary.textContent=project.title;d.append(summary);const content=document.createElement('div');content.className='project-info';const status=document.createElement('span');status.className='project-status';status.textContent=project.status;content.append(status);[['Research question',project.question],['Approach',project.method]].forEach(([label,value])=>{const line=document.createElement('p');const strong=document.createElement('strong');strong.textContent=label+': ';line.append(strong,document.createTextNode(value));content.append(line)});d.append(content);list.append(d)});el.append(list)}
 
-function go(i,updateHash=true){current=Math.max(0,Math.min(sections.length-1,i));sections.forEach((s,j)=>{s.classList.toggle('active',j===current);s.setAttribute('aria-hidden',String(j!==current))});nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current>=4&&current<=5)||(destination===7&&current>=8&&current<=11))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+sections.length;if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'})}
+let transitionTimer=null;
+function themeGroup(i){return i>=3&&i<=5?'research':i>=7&&i<=11?'teaching':null}
+function go(i,updateHash=true){
+ const previous=current;
+ const next=Math.max(0,Math.min(sections.length-1,i));
+ if(transitionTimer!==null){clearTimeout(transitionTimer);transitionTimer=null}
+ sections.forEach(el=>el.classList.remove('theme-leaving','theme-entering','theme-forward','theme-backward'));
+ const animateTheme=previous!==next&&themeGroup(previous)!==null&&themeGroup(previous)===themeGroup(next)&&window.matchMedia('(min-width:951px) and (prefers-reduced-motion:no-preference)').matches;
+ current=next;
+ sections.forEach((el,j)=>{el.classList.toggle('active',j===current);el.setAttribute('aria-hidden',String(j!==current))});
+ if(animateTheme){
+  const direction=next>previous?'theme-forward':'theme-backward';
+  sections[previous].classList.add('theme-leaving',direction);
+  sections[current].classList.add('theme-entering',direction);
+  transitionTimer=setTimeout(()=>{sections[previous].classList.remove('theme-leaving',direction);sections[current].classList.remove('theme-entering',direction);transitionTimer=null},520);
+ }
+nav.forEach(b=>{const destination=Number(b.dataset.go);if(destination===current||(destination===3&&current>=4&&current<=5)||(destination===7&&current>=8&&current<=11))b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});[...dots.children].forEach((b,j)=>{b.classList.toggle('on',j===current);b.setAttribute('aria-current',String(j===current))});document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===sections.length-1;document.getElementById('count').textContent=String(current+1).padStart(2,'0')+' / '+sections.length;if(updateHash)history.replaceState(null,'','#'+sections[current].id);window.scrollTo({top:0,behavior:'instant'})}
 sections.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to '+s.id);b.addEventListener('click',()=>go(i));dots.append(b)});document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>{renderTopic(Number(b.dataset.topic));go(5)}));document.querySelectorAll('[data-research]').forEach(b=>b.addEventListener('click',()=>renderTopic(Number(b.dataset.research))));document.getElementById('prev').addEventListener('click',()=>go(current-1));document.getElementById('next').addEventListener('click',()=>go(current+1));document.getElementById('year').textContent=new Date().getFullYear();window.addEventListener('hashchange',()=>{const i=sections.findIndex(s=>s.id===location.hash.slice(1));if(i>=0)go(i,false)});document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1)});renderTopic(0);const initial=sections.findIndex(s=>s.id===location.hash.slice(1));go(initial>=0?initial:0,false);
 /* PDF buttons become active automatically when the corresponding public file exists. */
 document.querySelectorAll('a[data-pdf]').forEach(async a=>{const url=a.getAttribute('data-pdf');try{const response=await fetch(url,{method:'HEAD',cache:'no-store'});if(!response.ok)throw new Error('not uploaded');}catch(e){a.classList.add('is-pending');a.removeAttribute('href');a.setAttribute('aria-disabled','true');a.textContent='PDF available after upload';}});
