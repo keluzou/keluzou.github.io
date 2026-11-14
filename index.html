@@ -199,74 +199,77 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 @media(max-width:620px){.about-journey{padding:23px 22px}.about-story p{font-size:14px}.about-story p:first-of-type{font-size:15px}}
 .project-info{padding:0 18px 17px}.project-info p{padding:0;margin:9px 0 0;font-size:13px;line-height:1.65}.project-info strong{color:var(--ink)}.project-status{display:inline-block;background:#fff1c8;color:#735923;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:700}.project summary:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
 
-/* Dedicated, consistently placed navigation within multi-page sections. */
-.section-navigation{display:flex;justify-content:flex-end;align-items:stretch;gap:12px;margin:22px 0 6px;padding:0 2px;clear:both}
-.section-nav-btn{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:4px;min-width:168px;max-width:235px;padding:11px 17px;border-radius:18px;border:1px solid #e5d6ae;background:#fffefb;color:var(--ink);text-align:right;box-shadow:0 6px 15px #26354b08;transition:transform .2s,background .2s}
-.section-nav-btn:hover{transform:translateY(-2px);background:#fff5d6}
-.section-nav-next{background:var(--yellow);border-color:#f3d67f}
-.section-nav-direction{font-size:11px;letter-spacing:.05em;font-weight:650;color:#77694e}
-.section-nav-title{font-size:13px;line-height:1.35;font-weight:800}
+/* Unified slide system — one consistent desktop canvas, typography and navigation. */
+:root{--slide-text:14px;--slide-line:1.55}
 .site-nav-label{font-size:11px;color:var(--muted);white-space:nowrap;margin-right:6px}
-@media(max-width:720px){.section-navigation{gap:8px}.section-nav-btn{min-width:0;max-width:50%;padding:10px 12px}.section-nav-title{font-size:12px}.site-nav-label{display:none}}
-
-/* Keep section controls visible without clipping on shorter viewports. */
-.site>main>.chapter.active{overflow-y:auto!important;overflow-x:hidden!important;scrollbar-width:thin}
-.chapter .section-navigation{position:sticky;bottom:0;z-index:4;padding:9px 4px 7px;margin:12px 0 0;background:linear-gradient(to bottom,rgba(255,250,240,0),var(--cream) 28%);border-radius:16px}
-#undergraduate-thesis .lead{margin-bottom:12px;line-height:1.55}
-#undergraduate-thesis .thesis-card{padding:clamp(16px,2vw,25px)!important}
-#undergraduate-thesis .thesis-card h3{margin-top:12px;margin-bottom:9px;line-height:1.3}
-#undergraduate-thesis .thesis-card p{line-height:1.55;margin-top:7px;margin-bottom:9px}
-#undergraduate-thesis .thesis-card .portfolio-tags{margin-top:8px;margin-bottom:10px}
-#undergraduate-thesis .section-navigation{margin-top:8px}
-
-/* Section navigation sits in its own reserved dock above the global footer. */
-.site>main:has(.chapter.active .section-navigation){padding-bottom:86px!important}
-.site>main>.chapter.active .section-navigation{position:fixed!important;bottom:76px!important;right:max(24px,calc((100vw - 1280px)/2 + 65px))!important;z-index:30!important;margin:0!important;padding:6px!important;background:var(--cream)!important;border:1px solid #eee3cc;border-radius:20px;box-shadow:0 8px 22px #26354b12}
-.site>main>.chapter.active .section-nav-btn{min-width:150px}
-@media(max-width:720px){.site>main>.chapter.active .section-navigation{bottom:72px!important;right:16px!important;left:16px!important;justify-content:flex-end}.site>main>.chapter.active .section-nav-btn{min-width:0;flex:1;max-width:50%}}
-
-/* Unified slide layout: scrolling content and a separate, non-overlapping navigation row. */
+.section-navigation{display:flex;align-items:center;justify-content:flex-end;gap:12px;min-height:66px;margin:0;padding:6px 0}
+.section-nav-btn{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:3px;min-width:170px;max-width:230px;padding:9px 15px;border:1px solid #e5d6ae;border-radius:16px;background:#fffefb;color:var(--ink);text-align:right;box-shadow:0 5px 12px #26354b08;transition:background .2s,transform .2s}
+.section-nav-btn:hover{background:#fff5d6;transform:translateY(-2px)}
+.section-nav-next{background:var(--yellow);border-color:#f3d67f}
+.section-nav-direction{font-size:11px;font-weight:650;color:#77694e}
+.section-nav-title{font-size:13px;line-height:1.35;font-weight:800}
+.project-info{padding:0 16px 14px}
+.project-info p{padding:0!important;margin:7px 0 0!important;font-size:12px!important;line-height:1.5!important}
+.project-info strong{color:var(--ink)}
+.project-status{display:inline-block;background:#fff1c8;color:#735923;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:700}
+.project summary:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
 @media(min-width:951px){
- .site>main:has(.chapter.active .section-navigation){padding-bottom:4px!important}
- .site>main>.chapter.active:has(.section-navigation){display:flex!important;flex-direction:column!important;justify-content:initial!important;overflow:hidden!important;padding:8px 6px 4px 0!important;height:100%!important}
- .site>main>.chapter.active .section-content{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;padding:0 8px 8px 0}
- .site>main>.chapter.active .section-navigation{position:static!important;flex:0 0 auto!important;align-self:stretch!important;display:flex!important;justify-content:flex-end!important;align-items:center!important;bottom:auto!important;right:auto!important;left:auto!important;margin:4px 0 0!important;padding:5px 6px!important;min-height:66px!important;background:var(--cream)!important;border:0!important;box-shadow:none!important;border-radius:0!important}
- .site>main>.chapter.active .section-nav-btn{min-width:164px;max-width:230px;padding:9px 15px}
- #research .section-content,#research-projects .section-content{display:flex;flex-direction:column}
- #research .section-content .research-experience-cards{flex:1 0 auto}
- #research-projects .section-content .research-layout{flex:1 0 auto}
+ html,body{height:100%;overflow:hidden}
+ .site{height:100dvh;min-height:0;overflow:hidden}
+ .site>header,.site>footer{flex:0 0 auto}
+ .site>main{flex:1 1 auto;min-height:0;height:auto;margin:0 auto;display:flex;align-items:stretch;overflow:hidden;padding-top:8px;padding-bottom:8px}
+ .site>main>.chapter{display:none;height:100%;min-height:0;max-height:none;overflow:hidden;padding:8px 0}
+ .site>main>.chapter.active{display:block;overflow:hidden!important}
+ .site>main>.chapter.active:has(.section-navigation){display:flex;flex-direction:column;justify-content:flex-start}
+ .site>main>.chapter.active .section-content{flex:1 1 auto;min-height:0;width:100%;zoom:1;overflow:hidden;display:block}
+ .site>main>.chapter.active .section-navigation{position:static;flex:0 0 66px;align-self:stretch;z-index:1;background:var(--cream);border:0;box-shadow:none}
+ .site>main>.chapter .eyebrow{margin:0 0 9px;font-size:11px}
+ .site>main>.chapter .section-title{font-size:clamp(30px,3vw,40px);line-height:1.14;margin:0 0 12px;padding-bottom:12px}
+ .site>main>.chapter .lead{font-size:15px;line-height:1.55;margin:0 0 16px;max-width:900px}
+ .site>main>.chapter .paper p,.site>main>.chapter .pub-card p{font-size:var(--slide-text);line-height:var(--slide-line)}
+ .site>main>.chapter .paper{padding:clamp(17px,1.7vw,25px)}
+ .site>main>.chapter .pill{padding:6px 11px;margin-bottom:8px}
+ .site>main>.chapter .portfolio-tags{margin:9px 0}
+ #research .research-experience-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+ #research .research-experience-cards .paper{margin:0!important;display:flex;flex-direction:column;justify-content:center}
+ #research .research-experience-cards h3{font-size:clamp(17px,1.5vw,21px);line-height:1.35}
+ #research .research-experience-cards p{margin-bottom:8px!important}
+ #undergraduate-thesis .thesis-card{padding:clamp(18px,2vw,27px)!important}
+ #undergraduate-thesis .thesis-card h3{font-size:clamp(19px,2vw,25px);line-height:1.3;margin:9px 0}
+ #undergraduate-thesis .thesis-card p{font-size:14px;line-height:1.55;margin:8px 0}
+ #undergraduate-thesis .lead{margin-bottom:13px}
+ #research-projects .research-layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:17px}
+ #research-projects .tabs{gap:8px}
+ #research-projects .tabs button{padding:11px 13px;font-size:13px}
+ #research-projects .research-detail{min-height:0;padding:17px 21px;display:block}
+ #research-projects .research-detail h3{font-size:23px;margin:3px 0 8px}
+ #research-projects .research-detail p{font-size:13px;line-height:1.5;margin:7px 0}
+ #research-projects .project-list{margin-top:10px;gap:7px}
+ #research-projects .project summary{font-size:12px;padding:10px 13px}
+ #research-projects .research-projects-bottom{margin-top:9px}
+ #teaching-portfolio .paper{margin-top:7px!important;padding:14px 20px}
+ #teaching-portfolio .paper>a[aria-label*="microteaching video"]{max-width:470px;margin:7px auto 9px!important}
+ #teaching-portfolio .paper>a[aria-label*="microteaching video"] img{max-height:195px;object-fit:cover}
+ #teaching-portfolio .paper h3{font-size:17px;margin:7px 0}
+ #teaching-portfolio .paper p{margin:6px 0}
+ #teaching-portfolio .microteaching-actions{gap:8px}
+ #lesson-designs .portfolio-cards .paper{padding:17px 20px}
+ #lesson-designs .portfolio-cards h3{font-size:17px}
+ #lesson-designs .portfolio-cards p{font-size:13px;line-height:1.5}
+ #classroom-practice .portfolio-feature,#curriculum-design .portfolio-feature{padding:22px 26px}
+ #teaching .teaching-overview .paper{padding:23px}
+ .site>main>.chapter .section-nav-btn{min-width:170px}
 }
 @media(max-width:950px){
- .site>main>.chapter.active:has(.section-navigation){display:flex;flex-direction:column;overflow:visible}
- .site>main>.chapter.active .section-content{min-height:0}
- .site>main>.chapter.active .section-navigation{position:static!important;bottom:auto!important;right:auto!important;left:auto!important;margin:14px 0 0!important;padding:6px 0!important;background:transparent!important;border:0!important;box-shadow:none!important}
-}
-
-/* Desktop: all Research/Teaching slides fit without internal vertical scrolling. */
-@media(min-width:951px){
- .site>main>.chapter.active:has(.section-navigation) .section-content{overflow:hidden!important;scrollbar-width:none!important}
- .site>main>.chapter.active:has(.section-navigation) .section-navigation{min-height:64px!important}
- #teaching-portfolio .section-content .paper{padding:15px 23px!important;margin-top:8px!important}
- #teaching-portfolio .section-content .paper>a[aria-label*="microteaching video"]{max-width:530px!important;margin:8px auto 10px!important}
- #teaching-portfolio .section-content .paper>a[aria-label*="microteaching video"] img{max-height:220px!important;object-fit:cover!important}
- #teaching-portfolio .section-content .paper h3{margin:7px 0!important}
- #teaching-portfolio .section-content .paper p{margin:6px 0!important}
- .chapter .section-content .eyebrow{margin-bottom:8px}
- .chapter .section-content .section-title{margin-bottom:11px;padding-bottom:10px}
- .chapter .section-content .lead{margin-bottom:12px;line-height:1.5}
- #undergraduate-thesis .section-content .thesis-card{padding:17px 24px!important}
- #undergraduate-thesis .section-content .thesis-card p{margin:6px 0;line-height:1.45}
-}
-
-/* Restore normal readable text sizes; never zoom or stretch slide content. */
-@media(min-width:951px){
- .site>main>.chapter.active .section-content{zoom:1!important;width:100%!important}
- .site>main>.chapter.active .section-content .section-title{font-size:clamp(27px,3.15vw,43px)!important}
- .site>main>.chapter.active .section-content .lead{font-size:15px!important;line-height:1.6!important}
- #undergraduate-thesis .section-content .thesis-card{padding:22px 28px!important}
- #undergraduate-thesis .section-content .thesis-card h3{font-size:clamp(18px,2vw,25px)!important}
- #undergraduate-thesis .section-content .thesis-card p{font-size:14px!important;line-height:1.6!important;margin:9px 0!important}
- .site>main>.chapter.active .section-navigation{min-height:64px!important}
+ html,body{height:auto;overflow-x:hidden;overflow-y:auto}
+ .site{min-height:100svh;height:auto;overflow:visible}
+ .site>main{height:auto;overflow:visible;display:block;padding-bottom:22px}
+ .site>main>.chapter.active{height:auto;max-height:none;overflow:visible!important}
+ .site>main>.chapter.active:has(.section-navigation){display:flex;flex-direction:column}
+ .site>main>.chapter .section-content{overflow:visible;width:100%;zoom:1}
+ .section-navigation{position:static!important;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+ .section-nav-btn{min-width:0;max-width:49%;padding:10px 12px}
+ .site-nav-label{display:none}
 }
 </style>
 </head>
