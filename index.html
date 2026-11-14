@@ -198,6 +198,16 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 @media(max-width:850px){.about-layout{grid-template-columns:1fr;gap:24px}.about-journey{max-width:650px}}
 @media(max-width:620px){.about-journey{padding:23px 22px}.about-story p{font-size:14px}.about-story p:first-of-type{font-size:15px}}
 .project-info{padding:0 18px 17px}.project-info p{padding:0;margin:9px 0 0;font-size:13px;line-height:1.65}.project-info strong{color:var(--ink)}.project-status{display:inline-block;background:#fff1c8;color:#735923;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:700}.project summary:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+
+/* Dedicated, consistently placed navigation within multi-page sections. */
+.section-navigation{display:flex;justify-content:flex-end;align-items:stretch;gap:12px;margin:22px 0 6px;padding:0 2px;clear:both}
+.section-nav-btn{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:4px;min-width:168px;max-width:235px;padding:11px 17px;border-radius:18px;border:1px solid #e5d6ae;background:#fffefb;color:var(--ink);text-align:right;box-shadow:0 6px 15px #26354b08;transition:transform .2s,background .2s}
+.section-nav-btn:hover{transform:translateY(-2px);background:#fff5d6}
+.section-nav-next{background:var(--yellow);border-color:#f3d67f}
+.section-nav-direction{font-size:11px;letter-spacing:.05em;font-weight:650;color:#77694e}
+.section-nav-title{font-size:13px;line-height:1.35;font-weight:800}
+.site-nav-label{font-size:11px;color:var(--muted);white-space:nowrap;margin-right:6px}
+@media(max-width:720px){.section-navigation{gap:8px}.section-nav-btn{min-width:0;max-width:50%;padding:10px 12px}.section-nav-title{font-size:12px}.site-nav-label{display:none}}
 </style>
 </head>
 <body>
@@ -273,7 +283,8 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 </div>
 
 </div>
-<div class="research-page-actions"><button class="btn yellow" type="button" data-go="4">Explore Thesis →</button></div>
+
+<nav class="section-navigation" aria-label="Research section navigation"><button class="section-nav-btn section-nav-next" type="button" data-go="4" aria-label="Next research page: Undergraduate Thesis"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Undergraduate Thesis</span></button></nav>
 </section>
 <section class="chapter" id="undergraduate-thesis" aria-label="Undergraduate thesis">
 <p class="eyebrow">03 / Research · 2 of 3</p><h2 class="section-title">Undergraduate Thesis.</h2>
@@ -285,7 +296,8 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <p>It also examines challenges in interdisciplinary integration, differentiated instruction and assessment, and proposes improvements to classroom tasks and evaluation.</p>
 <div class="portfolio-tags"><span>Chinese language education</span><span>Interdisciplinary teaching</span><span>Curriculum design</span></div>
 <a class="btn yellow portfolio-pdf" href="Undergraduate_Thesis_Interdisciplinary_Chinese_Teaching%20%281%29.pdf" data-pdf="Undergraduate_Thesis_Interdisciplinary_Chinese_Teaching%20%281%29.pdf" target="_blank" rel="noopener noreferrer">Read Thesis (PDF) ↗</a></article>
-<div class="research-page-actions"><button class="btn yellow" type="button" data-go="5">Explore Graduate Projects →</button></div></section>
+<nav class="section-navigation" aria-label="Research section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="3" aria-label="Previous research page: Research Experience"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Research Experience</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="5" aria-label="Next research page: Graduate Projects"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Graduate Projects</span></button></nav>
+</section>
 <section class="chapter" id="research-projects" aria-label="Graduate projects and research directions">
 <p class="eyebrow">03 / Research · 3 of 3</p>
 <h2 class="section-title">Graduate Projects.</h2>
@@ -294,6 +306,7 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 
 
 <div class="research-projects-bottom"><div><span class="pill">Future direction</span><span class="research-future-line">Connecting language education, applied linguistics and AI-assisted learning.</span></div></div>
+<nav class="section-navigation" aria-label="Research section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="4" aria-label="Previous research page: Undergraduate Thesis"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Undergraduate Thesis</span></button></nav>
 </section>
 <section class="chapter" id="publications" aria-label="Publications">
 <p class="eyebrow">04 / Publications</p>
@@ -320,7 +333,8 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <p class="lead">Teaching experience and graduate study inform my interest in evidence-based language education.</p>
 <div class="teaching-overview"><div class="split"><div class="paper"><span class="pill">Teaching · 2025</span><h3>Chinese Language Teaching Internship</h3><p>Wenxi Middle School, Hangzhou. Experience in lesson planning, classroom instruction and student support, informed by a teacher-education background.</p></div><div class="paper"><span class="pill">Academic projects</span><h3>Connecting research and practice</h3><p>Graduate coursework includes research design, language and cognition, AI-assisted learning, and corpus-based lexical analysis. These experiences shape my interest in evidence-based language education.</p></div></div>
 </div>
-<div class="research-page-actions"><span class="mini-note">Next: Microteaching Portfolio</span><button class="btn yellow" type="button" data-go="8">View Teaching Portfolio →</button></div>
+
+<nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-next" type="button" data-go="8" aria-label="Next teaching page: Microteaching Portfolio"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Microteaching Portfolio</span></button></nav>
 </section>
 <section class="chapter" id="teaching-portfolio" aria-label="Microteaching portfolio">
 <p class="eyebrow">05 / Teaching · 2 of 5</p><h2 class="section-title">Microteaching Portfolio.</h2>
@@ -338,7 +352,8 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
     <a class="btn alt portfolio-pdf" href="Oath_of_the_Land_Lesson_Slides.pdf" data-pdf="Oath_of_the_Land_Lesson_Slides.pdf" target="_blank" rel="noopener noreferrer">View Slides (PDF) ↗</a>
   </div>
 </div>
-<div class="teaching-continue"><span class="mini-note">More undergraduate teaching work follows.</span><button class="btn yellow" type="button" data-go="9">Explore Lesson Designs →</button></div>
+
+<nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="7" aria-label="Previous teaching page: Teaching Experience"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Teaching Experience</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="9" aria-label="Next teaching page: Lesson Designs"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Lesson Designs</span></button></nav>
 </section>
 <section class="chapter" id="lesson-designs" aria-label="Selected lesson designs">
 <p class="eyebrow">05 / Teaching · 3 of 5</p><h2 class="section-title">Selected Lesson Designs.</h2>
@@ -347,26 +362,29 @@ footer{width:min(1280px,100%);margin:0 auto;padding:18px clamp(22px,5vw,65px) 24
 <article class="paper portfolio-card"><span class="pill">Lesson design · Classical Chinese</span><h3>Reading Snow: <em>Yong Xue</em> (《咏雪》)</h3><p>A concise lesson plan adapted from the original teaching design, with the verbatim teaching script omitted. The lesson is built around a winter gathering in classical Chinese literature. Students compare figurative expressions, interpret characters and discuss alternative readings through open-ended questions.</p><div class="portfolio-tags"><span>Close reading</span><span>Discussion-based learning</span></div><a class="btn yellow portfolio-pdf" href="Yongxue_Lesson_Design.pdf" data-pdf="Yongxue_Lesson_Design.pdf" target="_blank" rel="noopener noreferrer">View Full PDF ↗</a><a class="btn alt portfolio-pdf" href="Yongxue_Lesson_Slides.pdf" data-pdf="Yongxue_Lesson_Slides.pdf" target="_blank" rel="noopener noreferrer">View Teaching Slides (PDF) ↗</a></article>
 <article class="paper portfolio-card"><span class="pill">Collaborative lesson slides · Classical Chinese</span><h3><em>The Peach Blossom Spring</em> (《桃花源记》)</h3><p>Interactive slides use images, textual comparison and guided questions to examine an imagined ideal society. A collaborative undergraduate teaching project; the original slides are presented in Chinese.</p><div class="portfolio-tags"><span>Multimedia teaching</span><span>Inquiry-based learning</span></div><a class="btn yellow portfolio-pdf" href="Peach_Blossom_Spring_Lesson_Slides.pdf" data-pdf="Peach_Blossom_Spring_Lesson_Slides.pdf" target="_blank" rel="noopener noreferrer">View Full PDF ↗</a></article>
 </div>
-<div class="teaching-continue"><button class="btn yellow" type="button" data-go="10">Explore Classroom Practice →</button></div>
+
+<nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="8" aria-label="Previous research page: Microteaching Portfolio"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Microteaching Portfolio</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="10" aria-label="Next teaching page: Classroom Practice"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Classroom Practice</span></button></nav>
 </section>
 <section class="chapter" id="classroom-practice" aria-label="Classroom teaching and reflection">
 <p class="eyebrow">05 / Teaching · 4 of 5</p><h2 class="section-title">Classroom Practice &amp; Reflection.</h2>
 <p class="lead">A teaching record from a real school placement, including lesson preparation and classroom reflection.</p>
 <article class="paper portfolio-feature"><span class="pill">School internship · Classroom teaching</span><h3><em>Suzhou Gardens</em> (《苏州园林》)</h3><p class="portfolio-subtitle">Lesson plan and classroom reflection · Chinese</p><p>This work documents a lesson taught during a school internship with actual students. The lesson plan and classroom reflection document how I designed and taught this lesson, and how I considered students’ responses and possible improvements.</p><div class="portfolio-tags"><span>Authentic classroom practice</span><span>Lesson planning</span><span>Teaching reflection</span></div><a class="btn yellow portfolio-pdf" href="Suzhou_Gardens_Classroom_Lesson_and_Reflection.pdf" data-pdf="Suzhou_Gardens_Classroom_Lesson_and_Reflection.pdf" target="_blank" rel="noopener noreferrer">View Lesson Plan & Reflection (PDF) ↗</a><a class="btn alt portfolio-pdf" href="Suzhou_Gardens_Teaching_Slides.pdf" data-pdf="Suzhou_Gardens_Teaching_Slides.pdf" target="_blank" rel="noopener noreferrer">View Teaching Slides (PDF) ↗</a></article>
-<div class="teaching-continue"><span class="mini-note">Next: a complete literature unit design.</span><button class="btn yellow" type="button" data-go="11">Explore Curriculum Design →</button></div>
+
+<nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="9" aria-label="Previous research page: Lesson Designs"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Lesson Designs</span></button><button class="section-nav-btn section-nav-next" type="button" data-go="11" aria-label="Next teaching page: Curriculum Design"><span class="section-nav-direction">Next →</span><span class="section-nav-title">Curriculum Design</span></button></nav>
 </section>
 <section class="chapter" id="curriculum-design" aria-label="Curriculum design">
 <p class="eyebrow">05 / Teaching · 5 of 5</p><h2 class="section-title">Curriculum Design.</h2>
 <p class="lead">An undergraduate unit-level instructional design connecting literary analysis and social interpretation.</p>
 <article class="paper portfolio-feature"><span class="pill">Unit plan · Grade 9 Chinese language</span><h3>Literature as a Mirror of Society</h3><p class="portfolio-subtitle">Novel Unit Curriculum Design · 第二单元“小说单元”教学设计</p><p>This two-lesson unit connects four literary works: <em>Kong Yiji</em>, <em>The Chameleon</em>, <em>The Rope Crossing</em> and <em>The Family of Puliu</em>. Guided reading, role-play and cross-text comparison encourage students to examine characterization, language and social criticism.</p><div class="portfolio-tags"><span>Curriculum planning</span><span>Cross-text comparison</span><span>Critical reading</span></div><a class="btn yellow portfolio-pdf" href="Novel_Unit_Curriculum_Design.pdf" data-pdf="Novel_Unit_Curriculum_Design.pdf" target="_blank" rel="noopener noreferrer">View Full PDF ↗</a></article>
 <p class="mini-note">These are selected undergraduate coursework samples, not peer-reviewed publications. Original teaching materials are in Chinese.</p>
-<div class="teaching-continue"><span class="mini-note">End of the teaching portfolio · Explore my academic contact.</span><button class="btn yellow" type="button" data-go="12">Continue to Contact →</button></div>
+
+<nav class="section-navigation" aria-label="Teaching section navigation"><button class="section-nav-btn section-nav-prev" type="button" data-go="10" aria-label="Previous research page: Classroom Practice"><span class="section-nav-direction">← Previous</span><span class="section-nav-title">Classroom Practice</span></button></nav>
 </section>
 <section class="chapter" id="contact" aria-label="Contact">
 <p class="eyebrow">06 / Contact</p><h2 class="section-title">Let's Start a Conversation.</h2><p class="lead">I welcome conversations about language learning, AI in education and potential research collaborations.</p><div class="contact-grid"><a class="contact-tile" href="https://github.com/keluzou" target="_blank" rel="noopener noreferrer"><strong>GitHub ↗</strong><p>Explore my public profile and website repository.</p></a><a class="contact-tile" href="mailto:keluzou2-c@my.cityu.edu.hk"><strong>Academic Email ↗</strong><p>keluzou2-c@my.cityu.edu.hk</p><p>City University of Hong Kong</p></a><a class="contact-tile" href="Kelu_Zou_Academic_CV_Formatted.pdf" data-pdf="Kelu_Zou_Academic_CV_Formatted.pdf" target="_blank" rel="noopener noreferrer"><strong>Download Academic CV ↗</strong><p>View my education, research experience, publication and teaching background (PDF).</p></a></div>
 </section>
 </main>
-<footer><span class="foot-note">© <span id="year"></span> Kelu Zou</span><div class="pager"><button class="step" id="prev" aria-label="Previous chapter">← Previous</button><span class="count" id="count">01 / 12</span><div class="dots" id="dots" aria-label="Chapter selection"></div><button class="step" id="next" aria-label="Next chapter">Next →</button></div></footer>
+<footer><span class="foot-note">© <span id="year"></span> Kelu Zou</span><div class="pager" aria-label="Site-wide navigation"><span class="site-nav-label">Site navigation</span><button class="step" id="prev" aria-label="Previous chapter">← Previous</button><span class="count" id="count">01 / 12</span><div class="dots" id="dots" aria-label="Chapter selection"></div><button class="step" id="next" aria-label="Next chapter">Next →</button></div></footer>
 </div>
 <script>
 const sections=[...document.querySelectorAll('.chapter')], nav=[...document.querySelectorAll('.nav button')],dots=document.getElementById('dots');let current=0,topic=0;
